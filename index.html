@@ -2,20 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.CSS">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
-<body style="background-color: orange;">
-<header style="background-color: white; text-align: center; height: 9vh;">
-    TEST1
+<body id="Main">
+<header>
+    <div class="OuterRow">
+        <img alt="IMAGEA" onclick="TranslateElement('#TravelImage', this, 1)"></img>
+        <img alt="IMAGEB" onclick="TranslateElement('#TravelImage', this, 1)"></img>
+        <img alt="IMAGEC" onclick="TranslateElement('#TravelImage', this, 1)"></img>
+        <img alt="IMAGED" onclick="TranslateElement('#TravelImage', this, 1)"></img>
+    </div>
+    <div id="TrailA">
+        <div class="DashedLine"></div>
+        <img id="TravelImage" alt="IMAGEE"></img>
+    </div>
 </header>
-<div id="MainContainerSpace" style="background-color: blanchedalmond; height: 75vh; margin: 2vh 0;">
-    
+<div id="MainContainerSpace">
+
 </div>
-<footer style="background-color: white; text-align: center; height: 9vh;">
-    TEST2
+<footer>
+    <div class="OuterRow">
+        <img alt="IMAGEA"></img>
+        <img alt="IMAGEB"></img>
+        <img alt="IMAGEC"></img>
+        <img alt="IMAGED"></img>
+    </div>
 </footer>
+<script src="index.js"></script>
 </body>
 
 </html>

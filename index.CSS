@@ -1,0 +1,58 @@
+/* PRIVATEER INTERACTIVE STYLE SHEET */
+:root {
+    --BaseBGOne: orange;
+    --BaseBGTwo: aliceblue;
+    --BaseBGThree: DarkGray;
+    --OnHoverColor: lightgray;
+    --BorderWidth: 1px;
+    --BorderColor: black;
+}
+
+body {
+    background-color: var(--BaseBGOne);
+}
+img {
+    margin: auto 0;
+    background-color: var(--BaseBGThree);
+}
+#MainContainerSpace {
+    background-color: var(--BaseBGTwo);
+    height: 75vh;
+    margin: 2vh 0;
+    border: .33vh solid var(--BaseBGThree);
+}
+footer, header {
+    background-color: var(--BaseBGTwo);
+    height: 9vh;
+    border: .33vh solid var(--BaseBGThree);
+    display: flex;
+    position: relative;
+}
+.OuterRow {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.OuterRow img:hover {
+    background-color: var(--OnHoverColor);
+}
+.DashedLine {
+    border: var(--BorderWidth) dashed var(--BorderColor);
+}
+#TravelImage {
+    transition: transform 0.3s ease-in-out;
+    position: absolute;
+}
+
+/* #region TrailA */
+
+#TrailA {
+    position: absolute;
+    width: 100%;
+}
+.DashedLine {
+    width: 90%;
+    margin: 0 auto;
+}
+/* #endregion TrailA */
