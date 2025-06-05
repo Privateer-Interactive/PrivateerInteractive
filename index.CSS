@@ -4,23 +4,28 @@
     --BaseBGTwo: aliceblue;
     --BaseBGThree: DarkGray;
     --OnHoverColor: lightgray;
-    --BorderWidth: 1px;
+    --BorderWidth: .33vh;
     --BorderColor: black;
+    --MainDivHeight: 75vh;
+    --MainDivHalfWidth: 45vw;
+    --MainDivHalfHeight: calc(36.5vh + var(--BorderWidth));
 }
 
 body {
     background-color: var(--BaseBGOne);
+    display: flex;
+    flex-direction: column;
 }
-img {
+
+.Hovering:hover {
+    background-color: var(--OnHoverColor);
+}
+/* #region HeaderFooter Style */
+header img, footer img {
     margin: auto 0;
     background-color: var(--BaseBGThree);
 }
-#MainContainerSpace {
-    background-color: var(--BaseBGTwo);
-    height: 75vh;
-    margin: 2vh 0;
-    border: .33vh solid var(--BaseBGThree);
-}
+
 footer, header {
     background-color: var(--BaseBGTwo);
     height: 9vh;
@@ -34,20 +39,86 @@ footer, header {
     display: flex;
     justify-content: space-evenly;
 }
-.OuterRow img:hover {
-    background-color: var(--OnHoverColor);
+/* #endregion HeaderFooter Style */
+
+
+
+#MainContainer {
+    background-color: var(--BaseBGTwo);
+    height: var(--MainDivHeight);
+    margin: 2vh 0;
+    border: var(--BorderWidth) solid var(--BaseBGThree);
+    display: flex;
+    flex-direction: column;
+    overflow-y:scroll;
+}
+#MainContainer > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: var(--BorderWidth) solid black;
+    min-height: var(--MainDivHalfHeight);
+}
+#MainContainer > div > div {
+    width: 50%;
+    height: 100%;
+    border: var(--BorderWidth) solid var(--BorderColor);
+}
+
+@media (max-width: 600px) {
+    body {
+        flex-direction: row;
+    }
+    header, footer {
+        width: 9vw;
+        height: var(--MainDivHeight);
+    }
+    header {         left: -9vw;}
+    footer {        right: -9vw;}
+    #MainContainer {
+        width: 90vw;
+        height: var(--MainDivHeight);
+        flex-direction: row;
+        margin: 0;
+    }
+    .OuterRow {
+        flex-direction: column;
+    }
+
+    header:hover, footer:hover {
+        background-color: var(--OnHoverColor);
+    }
+}
+
+@media (orientation: portrait)
+{
+    
+}
+
+
+
+/* #region Project Trail */
+#ProjectTrail {
+    position: absolute;
+    width: 100%;
+    margin-top: 7vh
 }
 .DashedLine {
-    border: var(--BorderWidth) dashed var(--BorderColor);
+    border: 1px dashed var(--BorderColor);
 }
 #TravelImage {
     transition: transform 0.3s ease-in-out;
     position: absolute;
 }
 
-/* #region TrailA */
-
-#TrailA {
+#ProjectTrail img:nth-child(1) {
+    float: left;
+}
+#ProjectTrail img:nth-child(3) {
+    float: right;
+}
+#TheTrail {
     position: absolute;
     width: 100%;
 }
@@ -55,4 +126,4 @@ footer, header {
     width: 90%;
     margin: 0 auto;
 }
-/* #endregion TrailA */
+/* #endregion ProjectTrail */

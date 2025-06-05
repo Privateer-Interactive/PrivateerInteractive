@@ -1,43 +1,20 @@
-function TranslateElement(targetElement, positionElement, desiredDimensions) {
+function Check(){
+    
+}
 
-    //#region ParameterVerification
-    if(typeof targetElement == 'string')
-    {
-        if(targetElement.charAt(0) == '#')
-            targetElement = document.getElementById(targetElement.substring(1));
-        else targetElement = document.querySelector(targetElement);
-    }
-    else if(typeof targetElement != 'object')
-        throw new Error('targetElement must be a string or an object');
+function TranslateElementToElement(targetElement, endElement, dimensions)
+{
+    targetElement = GetDOMElement(targetElement);
+    endElement = GetDOMElement(endElement);
 
-    if(typeof positionElement == 'string')
-    {
-        if(positionElement.charAt(0) == '#')
-            positionElement = document.getElementById(positionElement.substring(1));
-        else positionElement = document.querySelector(positionElement);
-    }
-    else if(typeof positionElement != 'object')
-        throw new Error('positionElement must be a string or an object');
-
-    let selectedDimensions = parseInt(desiredDimensions, 0);
-    if(isNaN(selectedDimensions))
-        throw new Error('desiredDimensions must be a number');
-    else if(selectedDimensions < 0 || selectedDimensions > 3)
-        throw new Error('desiredDimensions must be between 0 and 3');
-    //#endregion
-    //#region DebuggingInfo
-    // console.log('targetElement', targetElement);
-    // console.log('targetElementLeft', targetElement.getBoundingClientRect().left);
-    // console.log('positionElementLeft', positionElement.getBoundingClientRect().left);
-    // console.log('targetElementLeft', targetElement.getBoundingClientRect().left);
-    // console.log('parentElementLeft', targetElement.parentElement.getBoundingClientRect().left);
-    //#endregion
+    let targetRect = targetElement.parentElement.getBoundingClientRect();
+    let endRect = endElement.getBoundingClientRect();
 
     let position = {
-        x :  positionElement.getBoundingClientRect().left - targetElement.parentElement.getBoundingClientRect().left,
-        y :  positionElement.getBoundingClientRect().top - targetElement.parentElement.getBoundingClientRect().top
+        x: endRect.left - targetRect.left,
+        y: endRect.top - targetRect.top
     };
-    switch(selectedDimensions)
+    switch(dimensions)
     {
         case 0:
             targetElement.style.transform = 'translate(' + position.x + 'px, ' + position.y + 'px)';
@@ -48,5 +25,34 @@ function TranslateElement(targetElement, positionElement, desiredDimensions) {
         case 2:
             targetElement.style.transform = 'translateY(' + position.y + 'px)';
             break;
+        default:
+            throw new Error('dimensions must be 0, 1, or 2');
     }
 }
+
+function GetDOMElement(elementToCheck)
+{
+    if(elementToCheck instanceof HTMLElement) return elementToCheck;
+    else if(typeof elementToCheck == 'string')
+    {
+        let firstChar = elementToCheck.charAt(0);
+        let targetElement;
+        switch(firstChar)
+        {
+            case '#':
+                targetElement = document.getElementById(elementToCheck.substring(1));
+                break;
+            case '.':
+                targetElement = document.querySelector(elementToCheck);
+                break;
+            default:
+                throw new Error('elementToCheck must be a valid CSS selector');
+        }
+
+        if(targetElement == null)
+            throw new Error('Entered value does NOT exist in the DOM');
+        else return targetElement;
+    }
+    else throw new Error('elementToCheck must be a string or an HTMLElement');
+}
+

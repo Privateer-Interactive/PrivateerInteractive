@@ -10,25 +10,42 @@
 <body id="Main">
 <header>
     <div class="OuterRow">
-        <img alt="IMAGEA" onclick="TranslateElement('#TravelImage', this, 1)"></img>
-        <img alt="IMAGEB" onclick="TranslateElement('#TravelImage', this, 1)"></img>
-        <img alt="IMAGEC" onclick="TranslateElement('#TravelImage', this, 1)"></img>
-        <img alt="IMAGED" onclick="TranslateElement('#TravelImage', this, 1)"></img>
+        <img alt="IMAGEB" class="Hovering"onclick="TranslateElementToElement('#TravelImage', this, 1)"></img>
+        <img alt="IMAGEC" class="Hovering"onclick="TranslateElementToElement('#TravelImage', this, 1)"></img>
+        <img alt="IMAGED" class="Hovering"onclick="TranslateElementToElement('#TravelImage', this, 1)"></img>
     </div>
-    <div id="TrailA">
-        <div class="DashedLine"></div>
+    <div id ="ProjectTrail">
+    <img alt="IMAGEF" class="Hovering" onclick="TranslateElementToElement('#TravelImage', this, 1)"></img>
+    <div id="TheTrail">    
+        
+        <div class="DashedLine">   </div>
         <img id="TravelImage" alt="IMAGEE"></img>
+  
     </div>
-</header>
-<div id="MainContainerSpace">
+    <img alt="IMAGEG" class="Hovering" onclick="TranslateElementToElement('#TravelImage', this, 1)"></img>
+    </div>
 
+</header>
+<div id="MainContainer">
+    <div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+    </div>
 </div>
 <footer>
     <div class="OuterRow">
-        <img alt="IMAGEA"></img>
-        <img alt="IMAGEB"></img>
-        <img alt="IMAGEC"></img>
-        <img alt="IMAGED"></img>
+        <img alt="IMAGEA" class="Hovering"></img>
+        <img alt="IMAGEB" class="Hovering"></img>
+        <img alt="IMAGEC" class="Hovering"></img>
+        <img alt="IMAGED" class="Hovering"></img>
     </div>
 </footer>
 <script src="index.js"></script>
