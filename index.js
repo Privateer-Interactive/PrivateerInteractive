@@ -4,7 +4,7 @@ let filePathBase = window.location.href;
 if(filePathBase == null || filePathBase.split('.').length > 3) 
     throw new Error('window.location.href is not a valid URL');
 console.log('filePathBase: ' + filePathBase);
-fetch('TextContent/description.txt')
+fetch('TextContent/ProjA-NSFREU/description.txt')
   .then(response => response.text())
   .then(data => {
     console.log(data);
