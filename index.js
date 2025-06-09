@@ -1,4 +1,10 @@
-fetch(window.location.href+ 'TextContent/description.txt')
+
+
+let filePathBase = window.location.href;
+if(filePathBase == null || filePathBase.split('.').length > 3) 
+    throw new Error('window.location.href is not a valid URL');
+
+fetch('TextContent/description.txt')
   .then(response => response.text())
   .then(data => {
     console.log(data);
