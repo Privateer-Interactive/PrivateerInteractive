@@ -3,14 +3,15 @@
 let filePathBase = window.location.href;
 filePathBase = filePathBase.substring(0, filePathBase.lastIndexOf('/'));
 console.log('filePathBase: ' + filePathBase);
+filePathBase = filePathBase + '/TextContent/ProjA-NSFREU/description';
 
 // if(filePathBase == null || filePathBase.split('.').length > 3) 
 //     filePathBase = '';//throw new Error('window.location.href is not a valid URL');
 // console.log('filePathBase: ' + filePathBase);
-fetch(filePathBase + '/TextContent/ProjA-NSFREU/description')
+fetch(filePathBase)
   .then(response => response.text())
   .then(data => {
-    //console.log(data);
+    console.log(data);
 
   });
 
