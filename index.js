@@ -1,7 +1,7 @@
-let contentA = GetDataFromPath('ProjA/Content/Intro.txt');
-contentA.then((text) => {
-    console.log('Content A:', text);
-});
+// let contentA = GetDataFromPath('ProjA/Content/Intro.txt');
+// contentA.then((text) => {
+//     console.log(text);
+// });
 function GetDataFromPath(filePath)
 {
     console.log('filePathBase: ' + filePathBase + filePath);
