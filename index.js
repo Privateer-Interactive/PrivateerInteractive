@@ -1,19 +1,28 @@
-
-
-let filePathBase = window.location.href;
-filePathBase = filePathBase.substring(0, filePathBase.lastIndexOf('/'));
-console.log('filePathBase: ' + filePathBase);
-filePathBase = filePathBase + '/TextContent/ProjA-NSFREU/description';
-
-// if(filePathBase == null || filePathBase.split('.').length > 3) 
-//     filePathBase = '';//throw new Error('window.location.href is not a valid URL');
-// console.log('filePathBase: ' + filePathBase);
-fetch(filePathBase)
-  .then(response => response.text())
-  .then(data => {
-    console.log(data);
-
-  });
+let contentA = GetDataFromPath('ProjA/Content/Intro.txt');
+contentA.then((text) => {
+    console.log('Content A:', text);
+});
+function GetDataFromPath(filePath)
+{
+    console.log('filePathBase: ' + filePathBase + filePath);
+    return new Promise((resolve, reject) => {
+        let completePath = filePathBase + filePath;
+        fetch(completePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(text => {
+                resolve(text);
+            })
+            .catch(error => {
+                console.error('Failed to fetch file', error);
+                reject(error);
+            });
+    });
+}
 
 function TranslateElementToElement(targetElement, endElement, dimensions)
 {
@@ -68,14 +77,14 @@ function GetDOMElement(elementToCheck)
     }
     else throw new Error('elementToCheck must be a string or an HTMLElement');
 }
-async function getDescriptionText() {
-    try {
-        const response = await fetch('/TextContent/ProjA-NSFREU/description');
-        if (!response.ok) throw new Error('Network response was not ok');
-        const text = await response.text();
-        return text;
-    } catch (error) {
-        console.error('Failed to fetch description.txt:', error);
-        return null;
-    }
-}
+// async function getDescriptionText() {
+//     try {
+//         const response = await fetch('/TextContent/ProjA-NSFREU/description');
+//         if (!response.ok) throw new Error('Network response was not ok');
+//         const text = await response.text();
+//         return text;
+//     } catch (error) {
+//         console.error('Failed to fetch description.txt:', error);
+//         return null;
+//     }
+// }
