@@ -1,13 +1,17 @@
 
 
 let filePathBase = window.location.href;
-if(filePathBase == null || filePathBase.split('.').length > 3) 
-    throw new Error('window.location.href is not a valid URL');
+filePathBase = filePathBase.substring(0, filePathBase.lastIndexOf('/'));
 console.log('filePathBase: ' + filePathBase);
-fetch('TextContent/ProjA-NSFREU/description.txt')
+
+// if(filePathBase == null || filePathBase.split('.').length > 3) 
+//     filePathBase = '';//throw new Error('window.location.href is not a valid URL');
+// console.log('filePathBase: ' + filePathBase);
+fetch(filePathBase + '/index.html')
   .then(response => response.text())
   .then(data => {
-    console.log(data);
+    //console.log(data);
+
   });
 
 function TranslateElementToElement(targetElement, endElement, dimensions)
@@ -63,4 +67,14 @@ function GetDOMElement(elementToCheck)
     }
     else throw new Error('elementToCheck must be a string or an HTMLElement');
 }
-
+async function getDescriptionText() {
+    try {
+        const response = await fetch('/TextContent/ProjA-NSFREU/description');
+        if (!response.ok) throw new Error('Network response was not ok');
+        const text = await response.text();
+        return text;
+    } catch (error) {
+        console.error('Failed to fetch description.txt:', error);
+        return null;
+    }
+}
