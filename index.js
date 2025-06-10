@@ -7,7 +7,7 @@ console.log('filePathBase: ' + filePathBase);
 // if(filePathBase == null || filePathBase.split('.').length > 3) 
 //     filePathBase = '';//throw new Error('window.location.href is not a valid URL');
 // console.log('filePathBase: ' + filePathBase);
-fetch(filePathBase + '/index.html')
+fetch(filePathBase + '/TextContent/ProjA-NSFREU/description')
   .then(response => response.text())
   .then(data => {
     //console.log(data);
