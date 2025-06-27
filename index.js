@@ -77,14 +77,3 @@ function GetDOMElement(elementToCheck)
     }
     else throw new Error('elementToCheck must be a string or an HTMLElement');
 }
-// async function getDescriptionText() {
-//     try {
-//         const response = await fetch('/TextContent/ProjA-NSFREU/description');
-//         if (!response.ok) throw new Error('Network response was not ok');
-//         const text = await response.text();
-//         return text;
-//     } catch (error) {
-//         console.error('Failed to fetch description.txt:', error);
-//         return null;
-//     }
-// }

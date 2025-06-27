@@ -41,8 +41,61 @@
     let filePathBase = window.location.href;
     filePathBase = filePathBase.substring(0, filePathBase.lastIndexOf('/'));
     filePathBase = filePathBase + '/Data/';
+
+    let itemPaths = {
+        ProjType : ["ProjA", "ProjB", "ProjC", "ProjD"],
+        ItemType : ["Content", "Images"],
+        ContentType : ["Intro", "Page", "Conclusion"],
+        ManualFileCounts : 
+        {
+            ProjAImagesCount : 0,
+            ProjBImagesCount : 0,
+            ProjCImagesCount : 0,
+            ProjDImagesCount : 0
+        },
+        IMGLists : [
+            ["ProjAIMG1.jpg", "ProjAIMG2.jpg", "ProjAIMG3.jpg"],
+            ["ProjBIMG1.jpg", "ProjBIMG2.jpg", "ProjBIMG3.jpg"],
+            ["ProjCIMG1.jpg", "ProjCIMG2.jpg", "ProjCIMG3.jpg"],
+            ["ProjDIMG1.jpg", "ProjDIMG2.jpg", "ProjDIMG3.jpg"]
+        ]
+    };
+
+    // REWRITE TO TAKE IN FIRST INDEX TO SET UP THE PAGES OF THE SELECTED PROJECT
+    let allData = {
+        
+    };
+    for(let index = 0; index < itemPaths.ProjType.length; index++)
+    {
+        allData[index] = {name:itemPaths.ProjType[index]};
+        let rawTextData = GetDataFromPath(filePathBase + itemPaths.ProjType[index] + itemPaths.ItemType[0] + ".txt");
+        console.log(rawTextData);
+        rawTextData = rawTextData.split('\n\n\n');
+        let imgCounter = 0;
+
+        // ADD PAGES TO ALLDATA
+        for(let currentSection = 0; currentSection < rawTextData.length; currentSection++)
+        {
+            let page = {
+                sideA : "",
+                sideB : ""
+            };
+            if(rawTextData[currentSection] == "IMG" && imgCounter < itemPaths.IMGLists[index].length)
+            {
+                page.sideA += `<img src="${itemPaths.IMGLists[index][imgCounter]}">`;
+                imgCounter++;
+            }
+            
+            // if(currentSection % 2 == 0) allData[index].Pages
+            // if(rawTextData[currentSection] == "IMG")
+                
+        }
+    }
 </script>
 <script src="index.js"></script>
+<script>
+    
+</script>
 </body>
 
 </html>
