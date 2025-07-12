@@ -1,2 +1,0 @@
-Text File Test
-<b>CHECKING USE OF MARKUP</b>

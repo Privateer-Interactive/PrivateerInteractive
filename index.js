@@ -77,3 +77,5 @@ function GetDOMElement(elementToCheck)
     }
     else throw new Error('elementToCheck must be a string or an HTMLElement');
 }
+
+// React, Angular, or Vue.js
