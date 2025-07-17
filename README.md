@@ -2,7 +2,7 @@
 Web page and introduction to the LLC.
 
 
-FORMATTING FOR ENTERING NEW PROJECT CONTENT
+RAW TEXT FORMATTING RULES
 --> Begin/End Formatting == '`TEXT`'
 --> New Section == '\n\n\n'
 --> New Page == '\n\n'
