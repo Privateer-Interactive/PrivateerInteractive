@@ -9,8 +9,20 @@
     let projectStructure = {
         pages : []
     };
-    
+    let ContentModifiers = {
+        SectionBreak : "\n\n\n", PageBreak : "\n\n",
+        TextModIDstart : '[', TextModIDend : ']', StartTextMod : 's', EndTextMod : 'e',
+        Bold : 'b', Italics : 'i', Underline : 'u',
+        AllModifiers : 
+            [SectionBreak, PageBreak, TextModIDstart, TextModIDend, StartTextMod, EndTextMod, Bold, Italics, Underline]
+    };
     function DeserializeStringContent(content)
     {
-        
+        let contentArray = content.split(ContentModifiers.AllModifiers);
+        contentArray.forEach(element => {
+            console.log(element);
+        });
     }
+
+    let totaltext = GetDataFromPath('ProjA/Content.txt');
+    DeserializeStringContent(totaltext);

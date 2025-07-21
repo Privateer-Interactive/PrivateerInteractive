@@ -1,10 +1,11 @@
 TEST SIDE A
-
+[sb]
 
 TEST SIDE B
+[ei]
 
 
 IMG  SIDE A2
-
+[su]
 
 TEST SIDE B2
