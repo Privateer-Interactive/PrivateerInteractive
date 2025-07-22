@@ -9,16 +9,17 @@
     let projectStructure = {
         pages : []
     };
-    let ContentModifiers = {
+
+    let allModifiers = "\n\n\n|\n\n|[|]|s|e|b|i|u";
+
+    let contentModifiers = {
         SectionBreak : "\n\n\n", PageBreak : "\n\n",
         TextModIDstart : '[', TextModIDend : ']', StartTextMod : 's', EndTextMod : 'e',
         Bold : 'b', Italics : 'i', Underline : 'u',
-        AllModifiers : 
-            [SectionBreak, PageBreak, TextModIDstart, TextModIDend, StartTextMod, EndTextMod, Bold, Italics, Underline]
     };
     function DeserializeStringContent(content)
     {
-        let contentArray = content.split(ContentModifiers.AllModifiers);
+        let contentArray = content.split(allModifiers, '|');
         contentArray.forEach(element => {
             console.log(element);
         });
