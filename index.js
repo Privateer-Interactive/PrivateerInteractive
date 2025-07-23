@@ -4,9 +4,9 @@
 // });
 function GetDataFromPath(filePath)
 {
-    console.log('filePathBase: ' + filePathBase + filePath);
+    console.log('filePathBase: ' + filePathData + filePath);
     return new Promise((resolve, reject) => {
-        let completePath = filePathBase + filePath;
+        let completePath = filePathData + filePath;
         fetch(completePath)
             .then(response => {
                 if (!response.ok) {
