@@ -19,10 +19,11 @@
     };
     function DeserializeStringContent(content)
     {
-        let contentArray = content.split(allModifiers, '|');
-        contentArray.forEach(element => {
-            console.log(element);
-        });
+        console.log(content);
+        // let contentArray = content.split();
+        // contentArray.forEach(element => {
+        //     console.log(element);
+        // });
     }
 
     let totaltext = GetDataFromPath('ProjA/Content.txt');
