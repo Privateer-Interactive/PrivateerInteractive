@@ -27,12 +27,8 @@
         //     console.log(element); 
         // });
         contentArray.forEach(element => {
-            let subElements = element.split(/\[|\]|s|e|b|i|u/);
-            console.log(subElements);
-            switch(element)
-            {
-                
-            }
+            let modifierSeparations = element.split(/\[|\]|/);
+            console.log(modifierSeparations);
         });
     }
 
