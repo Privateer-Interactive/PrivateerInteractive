@@ -28,5 +28,6 @@
         // });
     }
 
-    let totaltext = GetDataFromPath('/ProjA/Content.txt');
-    DeserializeStringContent(totaltext);
+    let totaltext = GetDataFromPath('/ProjA/Content.txt').then(content => {
+        DeserializeStringContent(content);
+    });
