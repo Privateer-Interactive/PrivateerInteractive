@@ -20,7 +20,8 @@
     function DeserializeStringContent(content)
     {
         console.log(content);
-        let contentArray = content.split(allModifiers.split('|'));
+        // Split by multiple separators using regex
+        let contentArray = content.split(/\n\n\n|\n\n|\[|\]|s|e|b|i|u/);
         console.log(contentArray);
         // contentArray.forEach(element => {
         //     console.log(element);
