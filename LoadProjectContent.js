@@ -21,13 +21,22 @@
     {
         console.log(content);
         // Split by multiple separators using regex
-        let contentArray = content.split(/\n\n\n|\n\n|\[|\]|s|e|b|i|u/);
+        let contentArray = content.split(/\n\n\n|\n\n|/);
         console.log(contentArray);
         // contentArray.forEach(element => {
-        //     console.log(element);
+        //     console.log(element); 
         // });
+        contentArray.forEach(element => {
+            let subElements = element.split(/\[|\]|s|e|b|i|u/);
+            console.log(subElements);
+            switch(element)
+            {
+                
+            }
+        });
     }
 
     let totaltext = GetDataFromPath('/ProjA/Content.txt').then(content => {
         DeserializeStringContent(content);
     });
+ 
