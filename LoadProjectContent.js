@@ -20,7 +20,8 @@
     function DeserializeStringContent(content)
     {
         console.log(content);
-        // let contentArray = content.split();
+        let contentArray = content.split(allModifiers, '|');
+        console.log(contentArray);
         // contentArray.forEach(element => {
         //     console.log(element);
         // });
