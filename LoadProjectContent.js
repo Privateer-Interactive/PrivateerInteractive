@@ -21,13 +21,13 @@
     {
         console.log(content);
         // Split by multiple separators using regex
-        let contentArray = content.split(/\n\n\n|\n\n|/);
+        let contentArray = content.split(/\n{2,3}/);
         console.log(contentArray);
         // contentArray.forEach(element => {
         //     console.log(element); 
         // });
         contentArray.forEach(element => {
-            let modifierSeparations = element.split(/\[|\]|/);
+            let modifierSeparations = element.split(/[\[\]]/);
             console.log(modifierSeparations);
         });
     }
