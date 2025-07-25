@@ -13,23 +13,37 @@
     let allModifiers = "\n\n\n|\n\n|[|]|s|e|b|i|u";
 
     let contentModifiers = {
-        SectionBreak : "\n\n\n", PageBreak : "\n\n",
+        PageBreak : "\n\n\n", SectionBreak : "\n\n",
         TextModIDstart : '[', TextModIDend : ']', StartTextMod : 's', EndTextMod : 'e',
         Bold : 'b', Italics : 'i', Underline : 'u',
     };
     function DeserializeStringContent(content)
     {
-        console.log(content);
+        let modifiedContent = content;
+        // console.log(content);
         // Split by multiple separators using regex
-        let contentArray = content.split(/\n{2,3}/);
-        console.log(contentArray);
-        // contentArray.forEach(element => {
-        //     console.log(element); 
-        // });
-        contentArray.forEach(element => {
-            let modifierSeparations = element.split(/[\[\]]/);
-            console.log(modifierSeparations);
+        //modifiedContent = modifiedContent.split(/\n{2,3}/);
+
+        // splits the content by three new lines, which represents a "page break"
+        // this "page break" represents a new group of sections (for now, this means just two sections)
+        modifiedContent = modifiedContent.split(contentModifiers.PageBreak);
+        let pageBreaks = [];//modifiedContent.split(contentModifiers.PageBreak);
+        modifiedContent.forEach((element) => {
+            let sectionBreaks = element.split(contentModifiers.SectionBreak);
+            pageBreaks.push(sectionBreaks);
         });
+        console.log(pageBreaks);
+        
+        // console.log(contentArray);
+        // // contentArray.forEach(element => {
+        // //     console.log(element); 
+        // // });
+        // contentArray.forEach(element => {
+        //     let modifierSeparations = element.split(/[\[\]]/);
+        //     console.log(modifierSeparations);
+        // });
+
+
     }
 
     let totaltext = GetDataFromPath('/ProjA/Content.txt').then(content => {
