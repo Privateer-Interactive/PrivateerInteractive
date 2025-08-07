@@ -35,7 +35,9 @@
         //console.log(pageSections);
         let contentSections = [];
         pageSections.forEach(element => {
-            contentSections.push(element.split('\n\n'));
+            element.forEach(secondElement => {
+                contentSections.push(secondElement.split('\n\n'));
+            });
         });
         console.log(contentSections);
         // console.log(contentArray);
