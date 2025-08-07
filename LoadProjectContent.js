@@ -27,13 +27,17 @@
         // splits the content by three new lines, which represents a "page break"
         // this "page break" represents a new group of sections (for now, this means just two sections)
         modifiedContent = modifiedContent.split(contentModifiers.PageBreak);
-        let pageBreaks = [];//modifiedContent.split(contentModifiers.PageBreak);
+        let pageSections = [];//modifiedContent.split(contentModifiers.PageBreak);
         modifiedContent.forEach((element) => {
             let sectionBreaks = element.split(contentModifiers.SectionBreak);
-            pageBreaks.push(sectionBreaks);
+            pageSections.push(sectionBreaks);
         });
-        console.log(pageBreaks);
-        
+        //console.log(pageSections);
+        let contentSections = [];
+        pageSections.forEach(element => {
+            contentSections.push(element.split('\n\n'));
+        });
+        console.log(contentSections);
         // console.log(contentArray);
         // // contentArray.forEach(element => {
         // //     console.log(element); 
