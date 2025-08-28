@@ -23,7 +23,7 @@ class DataStructure
                 console.error(`Invalid index: ${index}. Must be an integer.`);
             }
         }
-        AddBulk(items)
+        AddBatch(items)
         {
             if(Array.isArray(items))
             {
@@ -41,7 +41,7 @@ class DataStructure
         {
             return index < 0 ? 0 : index > this.itemList.length ? this.itemList.length : index
         }
-        InsertBulk(items, index)
+        InsertBatch(items, index)
         {
             if(!Array.isArray(items))
             {

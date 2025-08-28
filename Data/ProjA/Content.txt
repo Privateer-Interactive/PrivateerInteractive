@@ -1,11 +1,3 @@
-TEST SIDE A
-[sb]
+<p>
 
-TEST SIDE B
-[ei]
-
-
-IMG  SIDE A2
-[su]
-
-TEST SIDE B2
+</p>
