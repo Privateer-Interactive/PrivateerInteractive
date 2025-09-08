@@ -52,7 +52,7 @@ footer, header {
     flex-direction: column;
     overflow-y:scroll;
 }
-#MainContainer > div {
+/* #MainContainer > div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +64,7 @@ footer, header {
     width: 50%;
     height: 100%;
     border: var(--BorderWidth) solid var(--BorderColor);
-}
+} */
 
 @media (max-width: 600px) {
     body {

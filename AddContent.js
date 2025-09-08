@@ -12,12 +12,27 @@ function GenerateContainer(mainBody)
     
 }
 
+
+
+/* #region AddContent_OnClick */
 function GenerateSection()
 {
 
 }
 
-function OrientContainer()
+function GenerateContainer()
 {
 
 }
+
+function OrientContainer(DOMElement)
+{
+    if(DOMElement instanceof Element)
+    {
+        if(DOMElement.className !== "Container")
+        {
+            throw new console.warn("DOMElement is not a valid Container element");
+        }
+    }
+}
+/* #endregion */
