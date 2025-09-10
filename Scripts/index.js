@@ -58,3 +58,21 @@ function GetDOMElement(elementToCheck)
     else throw new Error('elementToCheck must be a string or an HTMLElement');
 }
 
+
+
+/* #region DOM_Management */
+
+function GenerateDOM(parentDOM, DOMtype = 'div', classType = null, idType = null)
+{
+    let newDOMElement = document.createElement(DOMtype);
+    if(newDOMElement == null) throw new Error('DOMtype is not a valid HTML element type');
+
+    if(classType) newDOMElement.className = classType;
+    if(idType) newDOMElement.id = idType;
+
+    if(typeof parentDOM === 'string') parentDOM = document.querySelector(parentDOM);
+    if(parentDOM instanceof Element) parentDOM.appendChild(newDOMElement);
+    else throw new Error('parentDOM must be an instance of Element');
+}
+
+/* #endregion */
