@@ -63,7 +63,7 @@ footer, header {
 #MainContainer > div > div, .MainBody > div > div {
     width: 50%;
     height: 100%;
-    border: var(--BorderWidth) solid var(--BorderColor);
+    border: var(--BorderWidth) solid var(--BaseBGThree);
 }
 
 @media (max-width: 600px) {
