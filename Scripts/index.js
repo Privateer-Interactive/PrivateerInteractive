@@ -1,8 +1,3 @@
-fetch(window.location.href+ 'TextContent/description.txt')
-  .then(response => response.text())
-  .then(data => {
-    console.log(data);
-  });
 
 function TranslateElementToElement(targetElement, endElement, dimensions)
 {

@@ -60,7 +60,7 @@ footer, header {
     border: var(--BorderWidth) solid black;
     min-height: var(--MainDivHalfHeight);
 }
-#MainContainer > div > div {
+#MainContainer > div > div, .MainBody > div > div {
     width: 50%;
     height: 100%;
     border: var(--BorderWidth) solid var(--BorderColor);
