@@ -57,13 +57,14 @@ function GetDOMElement(elementToCheck)
 
 /* #region DOM_Management */
 
-function GenerateDOM(parentDOM, DOMtype = 'div', classType = null, idType = null, typeType = null)
+function GenerateDOM(parentDOM, DOMtype = 'div', content = null, classType = null, idType = null, typeType = null)
 {
     let newDOMElement = document.createElement(DOMtype);
     if(newDOMElement == null) throw new Error('DOMtype is not a valid HTML element type');
 
     if(classType) newDOMElement.className = classType;
     if(idType) newDOMElement.id = idType;
+    if(content) newDOMElement.innerHTML = content;
     newDOMElement.type = typeType;
 
     if(typeof parentDOM === 'string') parentDOM = document.querySelector(parentDOM);
