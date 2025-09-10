@@ -43,7 +43,7 @@ footer, header {
 
 
 
-#MainContainer {
+#MainContainer, .MainBody {
     background-color: var(--BaseBGTwo);
     height: var(--MainDivHeight);
     margin: 2vh 0;
