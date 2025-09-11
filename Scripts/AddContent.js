@@ -15,7 +15,6 @@ function AddGroup(parentDOM) {
     let label = GenerateDOM(editorGroup, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null);
     let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
     label.htmlFor = select.id;
-    label.display = 'none';
-    
+
     return groupBase;
 }

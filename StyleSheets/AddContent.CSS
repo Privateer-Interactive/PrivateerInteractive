@@ -1,3 +1,7 @@
 .AddCButton {
     float: left;
 }
+
+label {
+    display: none;
+}
