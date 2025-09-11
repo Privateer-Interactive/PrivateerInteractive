@@ -57,6 +57,18 @@ function GetDOMElement(elementToCheck)
 
 /* #region DOM_Management */
 
+/**
+ * Creates and appends a new DOM element to a specified parent element.
+ *
+ * @param {Element|string} parentDOM - The parent DOM element or a selector string to append the new element to.
+ * @param {string} [DOMtype='div'] - The type of DOM element to create (e.g., 'div', 'span').
+ * @param {string|null} [content=null] - The HTML content to set inside the new element.
+ * @param {string|null} [classType=null] - The class name(s) to assign to the new element.
+ * @param {string|null} [idType=null] - The ID to assign to the new element.
+ * @param {string|null} [typeType=null] - The value to assign to the 'type' property of the new element.
+ * @returns {Element} The newly created DOM element.
+ * @throws {Error} If the DOM type is invalid or the parentDOM is not a valid element.
+ */
 function GenerateDOM(parentDOM, DOMtype = 'div', content = null, classType = null, idType = null, typeType = null)
 {
     let newDOMElement = document.createElement(DOMtype);

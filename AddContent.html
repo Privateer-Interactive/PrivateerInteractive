@@ -10,17 +10,12 @@
 <body>
     <header>
         <button type="button" onclick="window.location.href='index.html'">To Main Page</button>
-        <button type="button" onclick="GenerateDOM(GenerateDOM('.MainBody', 'div', null, 'Group'), 'button', '+', 'AddCButton', null, 'button');">Add Section</button>
-        <label for="optionsSelect">Choose an option:</label>
-        <select id="optionsSelect" name="optionsSelect">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-        </select>
+        <button type="button" onclick="AddGroup('.MainBody')">Add Section</button>
     </header>
     <div class="MainBody">
 
     </div>
 </body>
 <script src="Scripts/index.js"></script>
+<script src="Scripts/AddContent.js"></script>
 </html>
