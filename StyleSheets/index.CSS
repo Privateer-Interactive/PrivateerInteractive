@@ -65,7 +65,7 @@ footer, header {
     min-height: var(--MainDivHalfHeight);
 }
 
-#MainContainer > div > div, .MainBody > div > div {
+#MainContainer > div > div, .MainBody > .Container {
     width: 50%;
     height: 100%;
     border: var(--BorderWidth) solid var(--BaseBGThree);
