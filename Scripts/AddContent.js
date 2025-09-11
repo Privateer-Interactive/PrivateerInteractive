@@ -7,7 +7,15 @@ function AddGroup(parentDOM) {
     // Use display none/block to show/hide menu items in overlay div.
     let groupBase = GenerateDOM(parentDOM, 'div', null, 'Group', null, null);
     let editorGroup = GenerateDOM(groupBase, 'div', null, 'OverlaySpace', null, null);
-    GenerateDOM(editorGroup, 'button', '+', 'AddCButton', null, 'button');
+    let editButton = GenerateDOM(editorGroup, 'button', '+', 'AddCButton', null, 'button');
+    
+    const labelCount = document.querySelectorAll('.EditorLabel').length;
+    
 
+    let label = GenerateDOM(editorGroup, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null);
+    let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
+    label.htmlFor = select.id;
+    label.display = 'none';
+    
     return groupBase;
 }
