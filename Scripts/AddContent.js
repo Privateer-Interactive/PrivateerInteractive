@@ -17,7 +17,7 @@ function AddGroup(parentDOM) {
     label.htmlFor = select.id;
 
     {
-        let options = ['Rotate', 'Add Container', 'Change Side', 'Remove THIS Group'];
+        let options = ['+','Rotate', 'Add Container', 'Change Side', 'Remove THIS Group'];
         options.forEach(text => {
             let option = document.createElement('option');
             option.value = text;
