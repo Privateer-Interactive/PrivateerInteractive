@@ -36,7 +36,7 @@ function AddGroup(parentDOM) {
         });
 
         select.onchange = function() {
-            let index = select.selectedIndex;
+            let index = select.selectedIndex - 1;
             if(index < options.length) optionFuncs[index]();
             select.selectedIndex = 0;
         }
