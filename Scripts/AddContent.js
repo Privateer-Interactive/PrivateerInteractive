@@ -28,7 +28,7 @@ function AddGroup(parentDOM) {
         ];
         if(parentDOM.class === 'MainBody') {
             options[options.length] = 'Add Group';
-            optionFuncs[optionFuncs.length] = () => { AddGroup(parentDOM); };
+            optionFuncs[optionFuncs.length] = () => { AddGroup(groupBase); };
         }
         optionFuncs[optionFuncs.length] = () => { 
             if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
