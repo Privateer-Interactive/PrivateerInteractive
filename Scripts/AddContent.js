@@ -18,12 +18,22 @@ function AddGroup(parentDOM) {
 
     {
         let options = ['+','Rotate', 'Add Container', 'Change Side', 'Remove THIS Group'];
+        let optionFuncs = [
+
+
+        ];
         options.forEach(text => {
             let option = document.createElement('option');
             option.value = text;
             option.text = text;
             select.appendChild(option);
         });
+
+        select.onchange = function() {
+            let index = select.selectedIndex;
+            if(index > 0) optionFuncs[index]();
+            selectedIndex = 0;
+        }
     }
 
     return groupBase;

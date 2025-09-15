@@ -5,3 +5,7 @@
 label {
     display: none;
 }
+
+select {
+    appearance: none;
+}
