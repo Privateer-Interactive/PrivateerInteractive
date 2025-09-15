@@ -22,12 +22,19 @@ function AddGroup(parentDOM) {
             () => { console.log('Rotate action'); },
             () => { console.log('Add Container action'); },
             () => { console.log('Change Side action'); },
-            () => { 
-                if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
+            // () => { 
+                
+            // }
+        ];
+        if(parentDOM.class === 'MainBody') {
+            options[options.length] = 'Add Group';
+            optionFuncs[optionFuncs.length] = () => { AddGroup(parentDOM); };
+        }
+        optionFuncs[optionFuncs.length] = () => { 
+            if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
                     groupBase.remove();
                 }
-            }
-        ];
+         };
         options.forEach(text => {
             let option = document.createElement('option');
             option.value = text;
