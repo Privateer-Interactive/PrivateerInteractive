@@ -16,8 +16,9 @@ function AddGroup(parentDOM) {
     let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
     label.htmlFor = select.id;
 
+    console.log("***MY VERSION *** 0.0.1***");
     {
-        let options = ['+','Rotate', 'Add Container', 'Change Side', 'Remove THIS Group'];
+        let options = ['+','Rotate', 'Add Container', 'Change Side'];
         let optionFuncs = [
             () => { console.log('Rotate action'); },
             () => { console.log('Add Container action'); },
@@ -27,14 +28,17 @@ function AddGroup(parentDOM) {
             // }
         ];
         if(parentDOM.class === 'MainBody') {
-            options[options.length] = 'Add Group';
-            optionFuncs[optionFuncs.length] = () => { AddGroup(groupBase); };
+            options.push('Add Group');
+            optionFuncs.push(() => { AddGroup(groupBase); });
         }
-        optionFuncs[optionFuncs.length] = () => { 
+        
+        options.push('Remove THIS Group');
+        optionFuncs.push(() => {
             if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
-                    groupBase.remove();
-                }
-         };
+                groupBase.remove();
+            }
+        });
+
         options.forEach(text => {
             let option = document.createElement('option');
             option.value = text;
