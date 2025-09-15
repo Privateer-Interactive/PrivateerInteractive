@@ -16,5 +16,15 @@ function AddGroup(parentDOM) {
     let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
     label.htmlFor = select.id;
 
+    {
+        let options = ['Rotate', 'Add Container', 'Change Side', 'Remove THIS Group'];
+        options.forEach(text => {
+            let option = document.createElement('option');
+            option.value = text;
+            option.text = text;
+            select.appendChild(option);
+        });
+    }
+
     return groupBase;
 }
