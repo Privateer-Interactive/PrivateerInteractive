@@ -19,7 +19,6 @@ function AddGroup(parentDOM) {
     {
         let options = ['+','Rotate', 'Add Container', 'Change Side', 'Remove THIS Group'];
         let optionFuncs = [
-            () => { console.log('No action for +'); },
             () => { console.log('Rotate action'); },
             () => { console.log('Add Container action'); },
             () => { console.log('Change Side action'); },
@@ -38,7 +37,7 @@ function AddGroup(parentDOM) {
 
         select.onchange = function() {
             let index = select.selectedIndex;
-            if(index > 0) optionFuncs[index]();
+            if(index < options.length) optionFuncs[index]();
             select.selectedIndex = 0;
         }
     }
