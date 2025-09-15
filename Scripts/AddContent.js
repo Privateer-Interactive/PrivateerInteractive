@@ -30,8 +30,8 @@ function AddGroup(parentDOM) {
         });
 
         select.onchange = function() {
-            let index = select.selectedIndex;
-            if(index > 0) optionFuncs[index]();
+            //let index = select.selectedIndex;
+            //if(index > 0) optionFuncs[index]();
             selectedIndex = 0;
         }
     }
