@@ -5,8 +5,12 @@ function CheckDOMValid(selectedDOM)
     
     if(!selectedDOM) errorMSG = 'No DOM element selected.';
     else if(typeof selectedDOM == 'string')
+    {
         if(document.querySelector(selectedDOM) == null) errorMSG = 'No DOM element matches the provided selector.';
-    else if(!(selectedDOM instanceof Element)) errorMSG = 'Selected DOM element is not valid.';
+        else selectedDOM = document.querySelector(selectedDOM); 
+    }
+
+    if(!(selectedDOM instanceof Element)) errorMSG = 'Selected DOM element is not valid.';
 
     return [
         errorMSG === '' ? true : false,
