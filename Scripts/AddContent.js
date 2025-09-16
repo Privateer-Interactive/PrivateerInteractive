@@ -1,7 +1,28 @@
+
+function CheckDOMValid(selectedDOM)
+{
+    let errorMSG = '';
+    
+    if(!selectedDOM) errorMSG = 'No DOM element selected.';
+    else if(typeof selectedDOM == 'string')
+        if(document.querySelector(selectedDOM) == null) errorMSG = 'No DOM element matches the provided selector.';
+    else if(!(selectedDOM instanceof Element)) errorMSG = 'Selected DOM element is not valid.';
+
+    return [
+        errorMSG === '' ? true : false,
+        new Error(errorMSG)
+    ];
+}
+
+
 function AddGroup(parentDOM) {
-    if(typeof GenerateDOM !== 'function') throw new Error('GenerateDOM function not found. Ensure that the index.js script is loaded before this script.');
-    if(typeof parentDOM === 'string') parentDOM = document.querySelector(parentDOM);
-    else if(!(parentDOM instanceof Element)) throw new Error('parentDOM must be an instance of Element or a valid CSS selector string');
+    // if(typeof GenerateDOM !== 'function') throw new Error('GenerateDOM function not found. Ensure that the index.js script is loaded before this script.');
+    // if(typeof parentDOM === 'string') parentDOM = document.querySelector(parentDOM);
+    // else if(!(parentDOM instanceof Element)) throw new Error('parentDOM must be an instance of Element or a valid CSS selector string');
+    
+    let checkResult = CheckDOMValid(parentDOM);
+    if(!checkResult[0]) throw checkResult[1];
+
     // IDEA
     // Create normal div, create overlay inside div with position absolute. Add buttons to overlay div (position relative?).
     // Use display none/block to show/hide menu items in overlay div.
@@ -16,12 +37,16 @@ function AddGroup(parentDOM) {
     let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
     label.htmlFor = select.id;
 
-    console.log("***MY VERSION *** 0.0.15***");
+
     {
         let options = ['+','Rotate', 'Add Container', 'Change Side'];
         let optionFuncs = [
             () => { console.log('Rotate action'); },
-            () => { console.log('Add Container action'); },
+            () => 
+                { 
+                    console.log('Add Container action');
+                    let containerElement = groupBase.appendChild(GenerateDOM(groupBase, 'div', null, 'Container', null, null));
+                },
             () => { console.log('Change Side action'); },
             // () => { 
                 
@@ -54,4 +79,9 @@ function AddGroup(parentDOM) {
     }
 
     return groupBase;
+}
+
+function AddContainer(parentDOM)
+{
+
 }

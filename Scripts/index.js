@@ -52,7 +52,7 @@ function GetDOMElement(elementToCheck)
     }
     else throw new Error('elementToCheck must be a string or an HTMLElement');
 }
-
+console.log("***MY VERSION *** 0.0.2***");
 
 
 /* #region DOM_Management */
