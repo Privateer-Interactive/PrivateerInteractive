@@ -1,0 +1,23 @@
+:root {
+    --container-border-color: black;
+    --container-border-width: 0.03vh;
+    --container-width: 100%;
+    --container-height: 100%;
+
+    --group-border-color: gray;
+    --group-border-width: 0.05vh;
+    --group-width: 100%;
+    --group-height: 50%;
+}
+
+.Container {
+    border: var(--container-border-width) solid var(--container-border-color);
+    width: var(--container-width);
+    height: var(--container-height);
+}
+
+.Group {
+    border: var(--group-border-width) solid var(--group-border-color);
+    width: var(--group-width);
+    height: var(--group-height);
+}
