@@ -1,4 +1,60 @@
 
+function ReturnFunctionParameters(func)
+{
+    // Does NOT handle default parameters or destructured parameters
+    // e.g. function example(a, b=2, {c, d}) {}
+    // would return ['a', 'b=2', '{c', 'd}']
+    // but should ideally return ['a', 'b', '{c, d}']
+    const funcStr = func.toString();
+    const params = funcStr.match(/\(([^)]*)\)/)[1];
+    return params.split(',').map(param => param.trim()).filter(Boolean);
+}
+
+let baseOptions = ['+','Rotate', 'Add', 'Remove', 'Alternate'];
+let baseFunctions = [
+    (parameterList) => {  if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.');
+        console.log('No action selected'); 
+    },
+
+    (parameterList) => { if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.');
+        console.log('Rotate action'); 
+    },
+
+    (parameterList) => {    if(parameterList !== null && parameterList.length !== 2) throw new Error('Add function requires exactly 2 parameters: (parentDOM, validClassType)');
+            let parentDOM = parameterList[0];
+            let validClassType = parameterList[1];
+
+            console.log('Add This');
+            CheckDOMValid(parentDOM);
+            if(!Object.values(validClassTypes).includes(validClassType) && validClassType !== '.MainBody') 
+                throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
+
+            let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
+            if(validClassType !== '.MainBody')
+                AddEditorOptions(GenerateDOM(primaryDOM, 'div', null, 'OverlaySpace', null, null));
+        },
+
+    (parameterList) => { if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.'); 
+        console.log('Remove This'); },
+
+    (parameterList) => { if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.'); 
+        console.log('Alternate This'); }
+];
+
+// function Loaded()
+// {
+//     requiredFunctionVariables = baseFunctions.map(func => ReturnFunctionParameters(func));
+// }
+// Loaded();
+
+
+let validClassTypes = {
+    '.Group' : [0,1,2,3,4],
+     '.Container' : [0,2,3,4]
+    };
+let GroupOptionFunctions = {};
+let ContainerOptionFunctions = {};
+
 function CheckDOMValid(selectedDOM)
 {
     let errorMSG = '';
@@ -18,68 +74,84 @@ function CheckDOMValid(selectedDOM)
     ];
 }
 
+function AddEditorOptions(selectedDOM)
+{
+    let selectedDOMType = selectedDOM.className;
+    let availableOptions = validClassTypes[selectedDOMType];
+    if(!availableOptions) throw new Error('Selected DOM element is not a valid type for adding editor options.');
+
+    
+    let select = GenerateDOM(selectedDOM, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
+    GenerateDOM(selectedDOM, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null).htmlFor = select.id;
+
+    availableOptions.forEach(element => {
+        let option = document.createElement('option');
+        option.value = baseOptions[element];
+        option.text = baseOptions[element];
+        select.appendChild(option);
+    });
+
+    select.onchange = function() {
+        let parameterList = null;
+        baseFunctions[select.selectedIndex]();
+        select.selectedIndex = 0;
+    }
+}
 
 function AddGroup(parentDOM) {
-    // if(typeof GenerateDOM !== 'function') throw new Error('GenerateDOM function not found. Ensure that the index.js script is loaded before this script.');
-    // if(typeof parentDOM === 'string') parentDOM = document.querySelector(parentDOM);
-    // else if(!(parentDOM instanceof Element)) throw new Error('parentDOM must be an instance of Element or a valid CSS selector string');
     
     let checkResult = CheckDOMValid(parentDOM);
     if(!checkResult[0]) throw checkResult[1];
 
-    // IDEA
-    // Create normal div, create overlay inside div with position absolute. Add buttons to overlay div (position relative?).
-    // Use display none/block to show/hide menu items in overlay div.
     let groupBase = GenerateDOM(parentDOM, 'div', null, 'Group', null, null);
     let editorGroup = GenerateDOM(groupBase, 'div', null, 'OverlaySpace', null, null);
-    //let editButton = GenerateDOM(editorGroup, 'button', '+', 'AddCButton', null, 'button');
     
     const labelCount = document.querySelectorAll('.EditorLabel').length;
     
 
-    let label = GenerateDOM(editorGroup, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null);
-    let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
-    label.htmlFor = select.id;
+    // let label = GenerateDOM(editorGroup, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null);
+    // let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
+    // label.htmlFor = select.id;
 
 
     {
-        let options = ['+','Rotate', 'Add Container', 'Change Side'];
-        let optionFuncs = [
-            () => { console.log('Rotate action'); },
-            () => 
-                { 
-                    console.log('Add Container action');
-                    let containerElement = groupBase.appendChild(GenerateDOM(groupBase, 'div', null, 'Container', null, null));
-                },
-            () => { console.log('Change Side action'); },
-            // () => { 
+        // let options = ['+','Rotate', 'Add Container', 'Change Side'];
+        // let optionFuncs = [
+        //     () => { console.log('Rotate action'); },
+        //     () => 
+        //         { 
+        //             console.log('Add Container action');
+        //             let containerElement = groupBase.appendChild(GenerateDOM(groupBase, 'div', null, 'Container', null, null));
+        //         },
+        //     () => { console.log('Change Side action'); },
+        //     // () => { 
                 
-            // }
-        ];
-        if(parentDOM.className === 'MainBody') {
-            options.push('Add Group');
-            optionFuncs.push(() => { AddGroup(groupBase); });
-        }
+        //     // }
+        // ];
+        // if(parentDOM.className === 'MainBody') {
+        //     options.push('Add Group');
+        //     optionFuncs.push(() => { AddGroup(groupBase); });
+        // }
 
-        options.push('Remove THIS Group');
-        optionFuncs.push(() => {
-            if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
-                groupBase.remove();
-            }
-        });
+        // options.push('Remove THIS Group');
+        // optionFuncs.push(() => {
+        //     if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
+        //         groupBase.remove();
+        //     }
+        // });
 
-        options.forEach(text => {
-            let option = document.createElement('option');
-            option.value = text;
-            option.text = text;
-            select.appendChild(option);
-        });
+        // options.forEach(text => {
+        //     let option = document.createElement('option');
+        //     option.value = text;
+        //     option.text = text;
+        //     select.appendChild(option);
+        // });
 
-        select.onchange = function() {
-            let index = select.selectedIndex - 1;
-            if(index < options.length) optionFuncs[index]();
-            select.selectedIndex = 0;
-        }
+        // select.onchange = function() {
+        //     let index = select.selectedIndex - 1;
+        //     if(index < options.length) optionFuncs[index]();
+        //     select.selectedIndex = 0;
+        // }
     }
 
     return groupBase;
