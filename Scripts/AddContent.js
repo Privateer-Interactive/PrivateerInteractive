@@ -2,7 +2,7 @@ if (typeof WrappedFunction !== 'undefined') {
     console.log('WrappedFunction is loaded.');
 } else {
     console.log('WrappedFunction is not loaded.');
-    return;
+    throw new Error('WrappedFunction.js must be loaded before AddContent.js');
 }
 
 
