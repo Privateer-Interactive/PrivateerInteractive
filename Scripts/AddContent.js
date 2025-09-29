@@ -1,51 +1,21 @@
-
-function ReturnFunctionParameters(func)
-{
-    // Does NOT handle default parameters or destructured parameters
-    // e.g. function example(a, b=2, {c, d}) {}
-    // would return ['a', 'b=2', '{c', 'd}']
-    // but should ideally return ['a', 'b', '{c, d}']
-    const funcStr = func.toString();
-    const params = funcStr.match(/\(([^)]*)\)/)[1];
-    return params.split(',').map(param => param.trim()).filter(Boolean);
+if (typeof WrappedFunction !== 'undefined') {
+    console.log('WrappedFunction is loaded.');
+} else {
+    console.log('WrappedFunction is not loaded.');
+    return;
 }
 
-let baseOptions = ['+','Rotate', 'Add', 'Remove', 'Alternate'];
-let baseFunctions = [
-    (parameterList) => {  if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.');
-        console.log('No action selected'); 
-    },
 
-    (parameterList) => { if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.');
-        console.log('Rotate action'); 
-    },
-
-    (parameterList) => {    if(parameterList !== null && parameterList.length !== 2) throw new Error('Add function requires exactly 2 parameters: (parentDOM, validClassType)');
-            let parentDOM = parameterList[0];
-            let validClassType = parameterList[1];
-
-            console.log('Add This');
-            CheckDOMValid(parentDOM);
-            if(!Object.values(validClassTypes).includes(validClassType) && validClassType !== '.MainBody') 
-                throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
-
-            let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
-            if(validClassType !== '.MainBody')
-                AddEditorOptions(GenerateDOM(primaryDOM, 'div', null, 'OverlaySpace', null, null));
-        },
-
-    (parameterList) => { if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.'); 
-        console.log('Remove This'); },
-
-    (parameterList) => { if(parameterList !== null && parameterList.length !== 0) throw new Error('No parameters expected for this function.'); 
-        console.log('Alternate This'); }
-];
-
-// function Loaded()
+// function ReturnFunctionParameters(func)
 // {
-//     requiredFunctionVariables = baseFunctions.map(func => ReturnFunctionParameters(func));
+//     // Does NOT handle default parameters or destructured parameters
+//     // e.g. function example(a, b=2, {c, d}) {}
+//     // would return ['a', 'b=2', '{c', 'd}']
+//     // but should ideally return ['a', 'b', '{c, d}']
+//     const funcStr = func.toString();
+//     const params = funcStr.match(/\(([^)]*)\)/)[1];
+//     return params.split(',').map(param => param.trim()).filter(Boolean);
 // }
-// Loaded();
 
 
 let validClassTypes = {
@@ -161,3 +131,21 @@ function AddContainer(parentDOM)
 {
 
 }
+
+AddThis = WrappedFunction(
+    // Add function for editing content
+    (parentDOM, validClassType) => {
+        console.log('Add This');
+        CheckDOMValid(parentDOM);
+        if(!Object.values(validClassTypes).includes(validClassType) && validClassType !== '.MainBody') 
+            throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
+
+        let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
+        if(validClassType !== '.MainBody')
+            AddEditorOptions(GenerateDOM(primaryDOM, 'div', null, 'OverlaySpace', null, null));
+    },
+    '+'
+);
+EditFunctionArray = [
+    AddThis
+];
