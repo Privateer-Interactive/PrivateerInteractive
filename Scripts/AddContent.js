@@ -132,7 +132,7 @@ function AddContainer(parentDOM)
 
 }
 
-AddThis = WrappedFunction(
+AddThis = new WrappedFunction(
     // Add function for editing content
     (parentDOM, validClassType) => {
         console.log('Add This');
