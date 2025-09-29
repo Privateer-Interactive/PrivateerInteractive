@@ -146,6 +146,6 @@ AddThis = WrappedFunction(
     },
     '+'
 );
-EditFunctionArray = [
+let EditFunctionArray = [
     AddThis
 ];
