@@ -152,3 +152,5 @@ let EditFunctionArray = [
 
 console.log(EditFunctionArray.length + ' Edit Functions loaded.');
 console.log(typeof EditFunctionArray[0] === 'function' ? 'EditFunctionArray[0] is a function.' : 'EditFunctionArray[0] is not a function.');
+console.log(typeof EditFunctionArray[0]);
+
