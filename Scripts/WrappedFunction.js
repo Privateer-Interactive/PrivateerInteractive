@@ -3,7 +3,7 @@ class WrappedFunction {
         this.storedFunction = storedFunction;
         this.funcName = customName;
     }
-    call(params) {
+    Call(params) {
         return this.storedFunction(...params);
     }
     toString() {

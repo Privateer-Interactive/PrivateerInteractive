@@ -149,3 +149,5 @@ let AddThis = new WrappedFunction(
 let EditFunctionArray = [
     AddThis
 ];
+
+console.log(EditFunctionArray.length + ' Edit Functions loaded.');
