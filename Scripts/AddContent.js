@@ -136,7 +136,7 @@ let AddThis = new WrappedFunction(
             throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
 
         let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
-        if(validClassType !== '.MainBody')
+        if(validClassType !== 'MainBody')
             AddEditorOptions(GenerateDOM(primaryDOM, 'div', null, 'OverlaySpace', null, null));
     },
     '+'
