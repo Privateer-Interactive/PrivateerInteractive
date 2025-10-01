@@ -26,22 +26,17 @@ let GroupOptionFunctions = {};
 let ContainerOptionFunctions = {};
 
 function CheckDOMValid(selectedDOM)
-{
-    let errorMSG = '';
-    
-    if(!selectedDOM) errorMSG = 'No DOM element selected.';
+{   
+    if(!selectedDOM) throw new Error('No DOM element selected.');
     else if(typeof selectedDOM == 'string')
     {
-        if(document.querySelector(selectedDOM) == null) errorMSG = 'No DOM element matches the provided selector.';
-        else selectedDOM = document.querySelector(selectedDOM); 
+        if(document.querySelector(selectedDOM) == null) throw new Error('No DOM element matches the provided selector.');
+        else selectedDOM = document.querySelector(selectedDOM);
     }
 
-    if(!(selectedDOM instanceof Element)) errorMSG = 'Selected DOM element is not valid.';
+    if(!(selectedDOM instanceof Element)) throw new Error('Selected DOM element is not valid.');
 
-    return [
-        errorMSG === '' ? true : false,
-        new Error(errorMSG)
-    ];
+    return selectedDOM;
 }
 
 function AddEditorOptions(selectedDOM)
@@ -136,7 +131,7 @@ let AddThis = new WrappedFunction(
     // Add function for editing content
     (parentDOM, validClassType) => {
         console.log('Add This');
-        CheckDOMValid(parentDOM);
+        parentDOM = CheckDOMValid(parentDOM);
         if(parentDOM.className !== '.MainBody' && !Object.values(validClassTypes).includes(validClassType)) 
             throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
 
