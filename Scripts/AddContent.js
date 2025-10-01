@@ -132,7 +132,7 @@ let AddThis = new WrappedFunction(
     (parentDOM, validClassType) => {
         console.log('Add This');
         parentDOM = CheckDOMValid(parentDOM);
-        if(parentDOM.className !== '.MainBody' && !Object.values(validClassTypes).includes(validClassType)) 
+        if(parentDOM.className !== 'MainBody' && !Object.values(validClassTypes).includes(validClassType)) 
             throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
 
         let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
