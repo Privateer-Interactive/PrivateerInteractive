@@ -1,29 +1,19 @@
-if (typeof WrappedFunction !== 'undefined') {
-    console.log('WrappedFunction is loaded.');
+if (typeof StoredFunction !== 'undefined') {
+    console.log('StoredFunction is loaded.');
 } else {
-    console.log('WrappedFunction is not loaded.');
-    throw new Error('WrappedFunction.js must be loaded before AddContent.js');
+    console.log('StoredFunction is not loaded.');
+    throw new Error('StoredFunction.js must be loaded before AddContent.js');
 }
 
 
-// function ReturnFunctionParameters(func)
-// {
-//     // Does NOT handle default parameters or destructured parameters
-//     // e.g. function example(a, b=2, {c, d}) {}
-//     // would return ['a', 'b=2', '{c', 'd}']
-//     // but should ideally return ['a', 'b', '{c, d}']
-//     const funcStr = func.toString();
-//     const params = funcStr.match(/\(([^)]*)\)/)[1];
-//     return params.split(',').map(param => param.trim()).filter(Boolean);
-// }
-
-
 let validClassTypes = {
-    '.Group' : [0,1,2,3,4],
-     '.Container' : [0,2,3,4]
+    '.Group' : { // class type
+         // Parameter
+    },
+     '.Container' : {
+
+     }
     };
-let GroupOptionFunctions = {};
-let ContainerOptionFunctions = {};
 
 function CheckDOMValid(selectedDOM)
 {   
@@ -41,24 +31,25 @@ function CheckDOMValid(selectedDOM)
 
 function AddEditorOptions(selectedDOM)
 {
-    let selectedDOMType = selectedDOM.className;
-    let availableOptions = validClassTypes[selectedDOMType];
+    let overlaySpace = GenerateDOM(selectedDOM, 'div', null, 'OverlaySpace', null, null);
+    let availableOptions = validClassTypes[selectedDOM.className];
     if(!availableOptions) throw new Error('Selected DOM element is not a valid type for adding editor options.');
 
     
-    let select = GenerateDOM(selectedDOM, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
-    GenerateDOM(selectedDOM, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null).htmlFor = select.id;
+    let select = GenerateDOM(overlaySpace, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
+    GenerateDOM(overlaySpace, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null).htmlFor = select.id;
 
     availableOptions.forEach(element => {
         let option = document.createElement('option');
-        option.value = baseOptions[element];
-        option.text = baseOptions[element];
+        theText = element;
+        option.value = option.text = theText; 
+        
         select.appendChild(option);
     });
 
     select.onchange = function() {
-        let parameterList = null;
-        baseFunctions[select.selectedIndex]();
+
+
         select.selectedIndex = 0;
     }
 }
@@ -126,8 +117,30 @@ function AddContainer(parentDOM)
 {
 
 }
+ContentEditFunctions = 
+{
+    '+' : // Add This
+    (parentDOM, validClassType) => {
+        console.log('Add This');
+        parentDOM = CheckDOMValid(parentDOM);
+        if(parentDOM.className !== 'MainBody' && !Object.values(validClassTypes).includes(validClassType)) 
+            throw new Error('Invalid class type provided. Valid types are: ' + Object.keys(validClassTypes).join(', ')); 
 
-let AddThis = new WrappedFunction(
+        let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
+        if(validClassType !== 'MainBody')
+            AddEditorOptions(primaryDOM);
+    },
+    '-' : // Remove This
+    (selectedDOM) => {
+        selectedDOM = CheckDOMValid(selectedDOM);
+        if(selectedDOM.className === 'MainBody') 
+            throw new Error('Cannot remove the MainBody element.');
+        
+    }
+
+};
+
+let AddThis = new StoredFunction(
     // Add function for editing content
     (parentDOM, validClassType) => {
         console.log('Add This');
@@ -137,15 +150,17 @@ let AddThis = new WrappedFunction(
 
         let primaryDOM = GenerateDOM(parentDOM, 'div', null, validClassType, null, null);
         if(validClassType !== 'MainBody')
-            AddEditorOptions(GenerateDOM(primaryDOM, 'div', null, 'OverlaySpace', null, null));
+            AddEditorOptions(primaryDOM);
     },
+    null,
     '+'
 );
+
 let EditFunctionArray = [
-    AddThis
+    AddThis,            // 0
 ];
 
 console.log(EditFunctionArray.length + ' Edit Functions loaded.');
 console.log(typeof EditFunctionArray[0] === 'function' ? 'EditFunctionArray[0] is a function.' : 'EditFunctionArray[0] is not a function.');
 console.log(typeof EditFunctionArray[0]);
-console.log(EditFunctionArray[0] instanceof WrappedFunction ? 'EditFunctionArray[0] is a WrappedFunction.' : 'EditFunctionArray[0] is not a WrappedFunction.');
+console.log(EditFunctionArray[0] instanceof StoredFunction ? 'EditFunctionArray[0] is a StoredFunction.' : 'EditFunctionArray[0] is not a StoredFunction.');
