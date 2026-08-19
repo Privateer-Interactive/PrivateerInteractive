@@ -62,53 +62,7 @@ function AddGroup(parentDOM) {
     let groupBase = GenerateDOM(parentDOM, 'div', null, 'Group', null, null);
     let editorGroup = GenerateDOM(groupBase, 'div', null, 'OverlaySpace', null, null);
     
-    const labelCount = document.querySelectorAll('.EditorLabel').length;
-    
-
-    // let label = GenerateDOM(editorGroup, 'label', 'DO NOT SEE THIS', 'EditorLabel', "EditorLabel#" + labelCount, null);
-    // let select = GenerateDOM(editorGroup, 'select', null, 'EditorSelect', "EditorSelect#" + labelCount, null);
-    // label.htmlFor = select.id;
-
-
-    {
-        // let options = ['+','Rotate', 'Add Container', 'Change Side'];
-        // let optionFuncs = [
-        //     () => { console.log('Rotate action'); },
-        //     () => 
-        //         { 
-        //             console.log('Add Container action');
-        //             let containerElement = groupBase.appendChild(GenerateDOM(groupBase, 'div', null, 'Container', null, null));
-        //         },
-        //     () => { console.log('Change Side action'); },
-        //     // () => { 
-                
-        //     // }
-        // ];
-        // if(parentDOM.className === 'MainBody') {
-        //     options.push('Add Group');
-        //     optionFuncs.push(() => { AddGroup(groupBase); });
-        // }
-
-        // options.push('Remove THIS Group');
-        // optionFuncs.push(() => {
-        //     if(confirm('Are you sure you want to remove this group? This action cannot be undone.')) {
-        //         groupBase.remove();
-        //     }
-        // });
-
-        // options.forEach(text => {
-        //     let option = document.createElement('option');
-        //     option.value = text;
-        //     option.text = text;
-        //     select.appendChild(option);
-        // });
-
-        // select.onchange = function() {
-        //     let index = select.selectedIndex - 1;
-        //     if(index < options.length) optionFuncs[index]();
-        //     select.selectedIndex = 0;
-        // }
-    }
+    //const labelCount = document.querySelectorAll('.EditorLabel').length;
 
     return groupBase;
 }
