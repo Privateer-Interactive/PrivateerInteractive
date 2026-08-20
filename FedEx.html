@@ -16,8 +16,17 @@
 </body>
 <script>
 
-    let fedExDeliveryRangeText = document.getElementById('FedExDeliveryRange')?.textContent;
+    let fedExDeliveryRangeText = fetch('TextContent/FedExDeliveryRange.txt')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('FedExDeliveryRange').value = data;
+        })
+        .catch(error => {
+            console.error('Error fetching FedExDeliveryRange.txt:', error);
+        });    
     let fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
+    
+
     let textAreaText = document.getElementById('FedExDeliveryRange')?.value;
     let validZipCodePatterns;
 
