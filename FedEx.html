@@ -16,9 +16,9 @@
 </body>
 <script>
 
-    const fedExDeliveryRangeText = document.getElementById('FedExDeliveryRange')?.textContent;
-    const fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
-    const textAreaText = document.getElementById('FedExDeliveryRange')?.value;
+    let fedExDeliveryRangeText = document.getElementById('FedExDeliveryRange')?.textContent;
+    let fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
+    let textAreaText = document.getElementById('FedExDeliveryRange')?.value;
     let validZipCodePatterns;
 
     for (let i = 0; i < (fedExDeliveryRange?.length ?? 0); i+=3) {
