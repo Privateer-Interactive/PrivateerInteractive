@@ -9,7 +9,8 @@
 <body>
   <h1>FedEx</h1>
   <input type="text" placeholder="Enter Zip-Code">
-  <textarea>
+  <button type="button" onclick="ValidateZipCode()">Search</button>
+    <textarea id="FedExDeliveryRange">
     
   </textarea>
 </body>
@@ -17,13 +18,25 @@
 
     const fedExDeliveryRangeText = document.getElementById('FedExDeliveryRange')?.textContent;
     const fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
+    const textAreaText = document.getElementById('FedExDeliveryRange')?.value;
+    let validZipCodePatterns;
+
+    for (let i = 0; i < (fedExDeliveryRange?.length ?? 0); i+=3) {
+        validZipCodePatterns = fedExDeliveryRange[i];
+        
+    }
     
+    for(let i = 0; i < (validZipCodePatterns?.length ?? 0); i++) {
+        console.log(validZipCodePatterns[i]);
+    }
 
     function ValidateZipCode(zipCode) {
         const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
         if(zipCodePattern.test(zipCode)) {
+
             //return true; // Valid zip code
         } else {
+            textAreaText = "Invalid zip code. Please enter a 5-digit zip code.";
             //return false; // Invalid zip code
         }
         //return zipCodePattern.test(zipCode);
