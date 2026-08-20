@@ -24,13 +24,14 @@
         .catch(error => {
             console.error('Error fetching FedExDeliveryRange.txt:', error);
         });    
+        
+    console.log(fedExDeliveryRangeText.value);
     let fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
     
 
     let textAreaText = document.getElementById('FedExDeliveryRange')?.value;
     let validZipCodePatterns;
 
-    console.log(fedExDeliveryRange.length);
 
     for (let i = 0; i < (fedExDeliveryRange?.length ?? 0); i+=3) {
         validZipCodePatterns = fedExDeliveryRange[i];
