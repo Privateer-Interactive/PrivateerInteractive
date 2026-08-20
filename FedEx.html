@@ -21,6 +21,8 @@
     let textAreaText = document.getElementById('FedExDeliveryRange')?.value;
     let validZipCodePatterns;
 
+    console.log(fedExDeliveryRange.length);
+
     for (let i = 0; i < (fedExDeliveryRange?.length ?? 0); i+=3) {
         validZipCodePatterns = fedExDeliveryRange[i];
         
