@@ -8,5 +8,25 @@
 </head>
 <body>
   <h1>FedEx</h1>
+  <input type="text" placeholder="Enter Zip-Code">
+  <textarea>
+    
+  </textarea>
 </body>
+<script>
+
+    const fedExDeliveryRangeText = document.getElementById('FedExDeliveryRange')?.textContent;
+    const fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
+    
+
+    function ValidateZipCode(zipCode) {
+        const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
+        if(zipCodePattern.test(zipCode)) {
+            //return true; // Valid zip code
+        } else {
+            //return false; // Invalid zip code
+        }
+        //return zipCodePattern.test(zipCode);
+    }
+</script>
 </html>
