@@ -29,29 +29,29 @@
     //let fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
     
 
-    let textAreaText = document.getElementById('FedExDeliveryRange')?.value;
-    let validZipCodePatterns;
+    // let textAreaText = document.getElementById('FedExDeliveryRange')?.value;
+    // let validZipCodePatterns;
 
 
-    for (let i = 0; i < (fedExDeliveryRange?.length ?? 0); i+=3) {
-        validZipCodePatterns = fedExDeliveryRange[i];
+    // for (let i = 0; i < (fedExDeliveryRange?.length ?? 0); i+=3) {
+    //     validZipCodePatterns = fedExDeliveryRange[i];
         
-    }
+    // }
     
-    for(let i = 0; i < (validZipCodePatterns?.length ?? 0); i++) {
-        console.log(validZipCodePatterns[i]);
-    }
+    // for(let i = 0; i < (validZipCodePatterns?.length ?? 0); i++) {
+    //     console.log(validZipCodePatterns[i]);
+    // }
 
-    function ValidateZipCode(zipCode) {
-        const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
-        if(zipCodePattern.test(zipCode)) {
+    // function ValidateZipCode(zipCode) {
+    //     const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
+    //     if(zipCodePattern.test(zipCode)) {
 
-            //return true; // Valid zip code
-        } else {
-            textAreaText = "Invalid zip code. Please enter a 5-digit zip code.";
-            //return false; // Invalid zip code
-        }
-        //return zipCodePattern.test(zipCode);
-    }
+    //         //return true; // Valid zip code
+    //     } else {
+    //         textAreaText = "Invalid zip code. Please enter a 5-digit zip code.";
+    //         //return false; // Invalid zip code
+    //     }
+    //     //return zipCodePattern.test(zipCode);
+    // }
 </script>
 </html>
