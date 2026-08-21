@@ -55,7 +55,7 @@
     function ValidateZipCode() {
         //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
         let zipCode = document.querySelector('input[type="text"]').value.trim();
-        if(zipCode.includes(zipCode)) {
+        if(fedExDeliveryZips.includes(zipCode)) {
             document.getElementById('FedExDeliveryRange').value = "Valid zip code. Delivery is available.";
             document.getElementById('FedExDeliveryRange').style.color = "green";
             //return true; // Valid zip code
