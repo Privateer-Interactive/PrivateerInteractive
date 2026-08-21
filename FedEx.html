@@ -20,14 +20,19 @@
         .then(response => response.text())
         .then(data => {
             //document.getElementById('FedExDeliveryRange').value = data;
-            fedExDeliveryRangeText = data.split('\n').map(range => range.trim()).split('-').map(range => range.trim()); 
+            let localSplit = data.split('\n').map(range => range.trim());
+            
+            for(let i = 0; i < localSplit.length; i++) {
+                //console.log(fedExDeliveryRangeText[i]);
+                fedExDeliveryRangeText.push(localSplit[i].split('-').map(range => range.trim()));
+            }
         })
         .catch(error => {
             console.error('Error fetching FedExDeliveryRange.txt:', error);
             fedExDeliveryRangeText = "Error fetching FedExDeliveryRange.txt";
         });    
         
-    console.log(fedExDeliveryRangeText.value);
+    console.log(fedExDeliveryRangeText.length);
     //let fedExDeliveryRange = fedExDeliveryRangeText?.split('-').map(range => range.trim());
     
 
