@@ -50,16 +50,18 @@
     //     console.log(validZipCodePatterns[i]);
     // }
 
-    // function ValidateZipCode(zipCode) {
-    //     const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
-    //     if(zipCodePattern.test(zipCode)) {
-
-    //         //return true; // Valid zip code
-    //     } else {
-    //         textAreaText = "Invalid zip code. Please enter a 5-digit zip code.";
-    //         //return false; // Invalid zip code
-    //     }
-    //     //return zipCodePattern.test(zipCode);
-    // }
+    function ValidateZipCode(zipCode) {
+        //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
+        if(fedExDeliveryRangeText.includes(zipCode)) {
+            document.getElementById('FedExDeliveryRange').value = "Valid zip code. Delivery is available.";
+            document.getElementById('FedExDeliveryRange').style.color = "green";
+            //return true; // Valid zip code
+        } else {
+            document.getElementById('FedExDeliveryRange').value = "Invalid zip code. Delivery is not available.";
+            document.getElementById('FedExDeliveryRange').style.color = "red";
+            //return false; // Invalid zip code
+        }
+        //return zipCodePattern.test(zipCode);
+    }
 </script>
 </html>
