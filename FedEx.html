@@ -24,7 +24,8 @@
             
             for(let i = 0; i < localSplit.length; i++) {
                 //console.log(fedExDeliveryRangeText[i]);
-                fedExDeliveryRangeText = fedExDeliveryRangeText.concat(fedExDeliveryRangeText, localSplit[i].split('-').map(range => range.trim()));
+                //fedExDeliveryRangeText = fedExDeliveryRangeText.concat(fedExDeliveryRangeText, localSplit[i].split('-').map(range => range.trim()));
+                fedExDeliveryRangeText.push(localSplit[i].split('-').map(range => range.trim()));
             }
         })
         .catch(error => {
