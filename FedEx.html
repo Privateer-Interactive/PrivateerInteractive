@@ -16,6 +16,7 @@
 </body>
 <script>
     let fedExDeliveryRangeText = []; 
+    let fedExDeliveryZips = [];
     fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
         .then(data => {
@@ -26,6 +27,7 @@
                 //console.log(fedExDeliveryRangeText[i]);
                 //fedExDeliveryRangeText = fedExDeliveryRangeText.concat(fedExDeliveryRangeText, localSplit[i].split('-').map(range => range.trim()));
                 fedExDeliveryRangeText.push(localSplit[i].split('-').map(range => range.trim()));
+                fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
             }
         })
         .catch(error => {
@@ -50,8 +52,9 @@
     //     console.log(validZipCodePatterns[i]);
     // }
 
-    function ValidateZipCode(zipCode) {
+    function ValidateZipCode() {
         //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
+        let zipCode = document.querySelector('input[type="text"]').value.trim();
         if(fedExDeliveryRangeText.includes(zipCode)) {
             document.getElementById('FedExDeliveryRange').value = "Valid zip code. Delivery is available.";
             document.getElementById('FedExDeliveryRange').style.color = "green";
