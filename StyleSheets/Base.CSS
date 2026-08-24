@@ -1,0 +1,17 @@
+:root {
+    --BaseBGOne: orange;
+    --BaseBGTwo: aliceblue;
+    --BaseBGThree: DarkGray;
+    --OnHoverColor: lightgray;
+    --BorderWidth: .33vh;
+    --BorderColor: black;
+    --MainDivHeight: 75vh;
+    --MainDivHalfWidth: 45vw;
+    --MainDivHalfHeight: calc(36.5vh + var(--BorderWidth));
+}
+
+body {
+    background-color: var(--BaseBGOne);
+    display: flex;
+    flex-direction: column;
+}
