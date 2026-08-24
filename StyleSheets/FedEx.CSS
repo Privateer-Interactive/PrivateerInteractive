@@ -1,0 +1,10 @@
+body {
+    font-size: 2em;
+}
+
+input[type="text"] {
+    height: 10vh;
+}
+textarea {
+    height: 50vh;
+}
