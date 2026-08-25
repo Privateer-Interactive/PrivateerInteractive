@@ -2,7 +2,7 @@
 
 input[type="text"] {
     height: 10vh;
-    font-size: 4rem;
+    font-size: clamp(1rem, 2vw, 2rem);
 }
 textarea {
     height: 50vh;
