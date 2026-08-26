@@ -35,6 +35,8 @@
                 fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
                 fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1]);
             }
+
+            fedExDeliveryZips.pop();
         })
         .catch(error => {
             console.error('Error fetching FedExDeliveryRange.txt:', error);
@@ -62,7 +64,7 @@
         //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
         let zipCode = document.querySelector('input[type="text"]').value.trim();
         if(fedExDeliveryZips.includes(zipCode)) {
-            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code. " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + " does this delivery .";
+            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code. " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + " does this delivery.";
             document.getElementById('FedExDeliveryRange').style.color = "green";
             //return true; // Valid zip code
         } else {
