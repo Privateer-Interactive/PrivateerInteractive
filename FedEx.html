@@ -33,7 +33,8 @@
                 //fedExDeliveryRangeText = fedExDeliveryRangeText.concat(fedExDeliveryRangeText, localSplit[i].split('-').map(range => range.trim()));
                 fedExDeliveryRangeText.push(localSplit[i].split('-').map(range => range.trim()));
                 fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
-                fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1]);
+                fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1].split('_').join(' '));
+                //fedExDeliverDrivers[i]
             }
 
             fedExDeliveryZips.pop();
