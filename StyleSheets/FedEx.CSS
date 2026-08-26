@@ -6,6 +6,6 @@ input[type="text"] {
     /*Use cqw for width and cqh for height to make it responsive to the viewport size*/
 }
 textarea {
-    font-size: clamp(4rem, 6rem, 8rem);
+    font-size: clamp(4rem, 6cqw, 8rem);
     height: 50vh;
 }
