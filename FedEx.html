@@ -24,6 +24,7 @@
         .then(data => {
             //document.getElementById('FedExDeliveryRange').value = data;
             let localSplit = data.split('\n').map(range => range.trim());
+            print(localSplit);
             //fedExDeliveryRangeText = localSplit.map(range => range.split('-').map(range => range.trim()));
             for(let i = 0; i < localSplit.length; i++) {
 
@@ -61,7 +62,7 @@
         //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
         let zipCode = document.querySelector('input[type="text"]').value.trim();
         if(fedExDeliveryZips.includes(zipCode)) {
-            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code. " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + " does this delivery.";
+            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code. " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + " does this delivery .";
             document.getElementById('FedExDeliveryRange').style.color = "green";
             //return true; // Valid zip code
         } else {
