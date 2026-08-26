@@ -2,9 +2,10 @@
 
 input[type="text"] {
     height: 10vh;
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(1rem, 1.5rem, 2rem);
+    /*Use cqw for width and cqh for height to make it responsive to the viewport size*/
 }
 textarea {
-    font-size: clamp(4rem, 2vw, 6rem);
+    font-size: clamp(4rem, 6rem, 8rem);
     height: 50vh;
 }
