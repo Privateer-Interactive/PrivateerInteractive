@@ -5,6 +5,6 @@ input[type="text"] {
     font-size: clamp(1rem, 2vw, 2rem);
 }
 textarea {
-    font-size: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(2rem, 2vw, 4rem);
     height: 50vh;
 }
