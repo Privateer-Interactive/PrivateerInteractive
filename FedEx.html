@@ -18,17 +18,21 @@
 <script>
     let fedExDeliveryRangeText = []; 
     let fedExDeliveryZips = [];
+    let fedExDeliveryDrivers = [];
     fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
         .then(data => {
             //document.getElementById('FedExDeliveryRange').value = data;
             let localSplit = data.split('\n').map(range => range.trim());
-            
+            //fedExDeliveryRangeText = localSplit.map(range => range.split('-').map(range => range.trim()));
             for(let i = 0; i < localSplit.length; i++) {
+
+
                 //console.log(fedExDeliveryRangeText[i]);
                 //fedExDeliveryRangeText = fedExDeliveryRangeText.concat(fedExDeliveryRangeText, localSplit[i].split('-').map(range => range.trim()));
                 fedExDeliveryRangeText.push(localSplit[i].split('-').map(range => range.trim()));
                 fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
+                fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1]);
             }
         })
         .catch(error => {
@@ -57,11 +61,11 @@
         //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
         let zipCode = document.querySelector('input[type="text"]').value.trim();
         if(fedExDeliveryZips.includes(zipCode)) {
-            document.getElementById('FedExDeliveryRange').value = "Valid zip code. Delivery is available.";
+            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code. " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + " does this delivery.";
             document.getElementById('FedExDeliveryRange').style.color = "green";
             //return true; // Valid zip code
         } else {
-            document.getElementById('FedExDeliveryRange').value = "Invalid zip code. Delivery is not available.";
+            document.getElementById('FedExDeliveryRange').value = zipCode + " - Invalid zip code. Delivery is not available.";
             document.getElementById('FedExDeliveryRange').style.color = "red";
             //return false; // Invalid zip code
         }
