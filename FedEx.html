@@ -16,6 +16,32 @@
   </textarea>
 </body>
 <script>
+    let inputTextVar = document.querySelector('input[type="text"]');
+    let textAreaVar = document.getElementById('FedExDeliveryRange');
+
+    function TextFitting(textContainer)
+    {
+        let currentSize = parseFloat(textContainer.style.fontSize) || 16; // Default font size if not set
+        if(currentSize > textContainer.scrollHeight)
+        {
+            while (textContainer.scrollHeight > textContainer.clientHeight && currentSize > 0) {
+                currentSize -= 1; // Decrease font size
+                textContainer.style.fontSize = currentSize + 'px';
+            }
+        }
+        else
+        {
+            while (textContainer.scrollHeight <= textContainer.clientHeight && currentSize < 1000) {
+                currentSize += 1; // Increase font size
+                textContainer.style.fontSize = currentSize + 'px';
+            }
+            // Decrease by one to ensure it fits
+            currentSize -= 1;
+            textContainer.style.fontSize = currentSize + 'px';
+        }
+    }
+
+
     let fedExDeliveryRangeText = []; 
     let fedExDeliveryZips = [];
     let fedExDeliveryDrivers = [];
@@ -64,6 +90,7 @@
     function ValidateZipCode() {
         //const zipCodePattern = /^\d{5}$/; // Regular expression for 5-digit zip code
         let zipCode = document.querySelector('input[type="text"]').value.trim();
+        zipCode = inputTextVar.value.trim();
         if(fedExDeliveryZips.includes(zipCode)) {
             document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code. " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + " does this delivery.";
             document.getElementById('FedExDeliveryRange').style.color = "green";
@@ -73,6 +100,8 @@
             document.getElementById('FedExDeliveryRange').style.color = "red";
             //return false; // Invalid zip code
         }
+
+        TextFitting(textAreaVar);
         //return zipCodePattern.test(zipCode);
     }
 </script>
