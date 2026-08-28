@@ -68,7 +68,7 @@
         let zipCode = document.querySelector('input[type="text"]').value.trim();
         zipCode = inputTextVar.value.trim();
         if(fedExDeliveryZips.includes(zipCode)) {
-            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + "\nArea: " + /*ENTER TOWN INFO HERE*/ + "\nVan Line " + /*ENTER VAN LINE NUMBER HERE*/;
+            document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[fedExDeliveryZips.indexOf(zipCode)] + "\nArea: " + /*ENTER TOWN INFO HERE*/ + "\nVan Line " + +""/*ENTER VAN LINE NUMBER HERE*/;
             document.getElementById('FedExDeliveryRange').style.color = "green";
         } else {
             document.getElementById('FedExDeliveryRange').value = zipCode + " - Invalid zip code. Delivery is not available.";
