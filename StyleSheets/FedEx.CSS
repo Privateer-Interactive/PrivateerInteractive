@@ -8,6 +8,11 @@ input[type="text"] {
 }
 textarea {
     /* font-size: clamp(4cqw, 6cqw, 8cqw); */
-    font-size: 10%;
+    font-size: 90%;
     height: 50vh;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
