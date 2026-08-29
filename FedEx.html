@@ -21,24 +21,24 @@
 
     function TextFitting(textContainer)
     {
-        // let currentSize = parseFloat(textContainer.style.fontSize) || 16; // Default font size if not set
-        // if(currentSize > textContainer.scrollHeight)
-        // {
-        //     while (textContainer.scrollHeight > textContainer.clientHeight && currentSize > 0) {
-        //         currentSize -= 1; // Decrease font size
-        //         textContainer.style.fontSize = currentSize + 'px';
-        //     }
-        // }
-        // else
-        // {
-        //     while (textContainer.scrollHeight <= textContainer.clientHeight && currentSize < 1000) {
-        //         currentSize += 1; // Increase font size
-        //         textContainer.style.fontSize = currentSize + 'px';
-        //     }
-        //     // Decrease by one to ensure it fits
-        //     currentSize -= 1;
-        //     textContainer.style.fontSize = currentSize + 'px';
-        // }
+        let currentSize = parseFloat(textContainer.style.fontSize) || 16; // Default font size if not set
+        if(currentSize > textContainer.scrollHeight)
+        {
+            while (textContainer.scrollHeight > textContainer.clientHeight && currentSize > 0) {
+                currentSize -= 1; // Decrease font size
+                textContainer.style.fontSize = currentSize + 'px';
+            }
+        }
+        else
+        {
+            while (textContainer.scrollHeight <= textContainer.clientHeight && currentSize < 1000) {
+                currentSize += 1; // Increase font size
+                textContainer.style.fontSize = currentSize + 'px';
+            }
+            // Decrease by one to ensure it fits
+            currentSize -= 1;
+            textContainer.style.fontSize = currentSize + 'px';
+        }
     }
 
 
