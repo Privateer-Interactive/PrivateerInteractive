@@ -57,8 +57,9 @@
                 fedExDeliveryRangeText.push(lineSplit);
                 fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
                 fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1].split('_').join(' '));
-                fedExDeliveryLocations.push(fedExDeliveryRangeText[i][2].split('_').join(' '));
-                fedExDeliveryVanLines.push(fedExDeliveryRangeText[i][3]);
+                // color code for contractor status identification
+                fedExDeliveryLocations.push(fedExDeliveryRangeText[i][3].split('_').join(' '));
+                fedExDeliveryVanLines.push(fedExDeliveryRangeText[i][4]);
             }
 
             fedExDeliveryZips.pop();
