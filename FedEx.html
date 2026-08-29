@@ -22,7 +22,7 @@
     function TextFitting(textContainer)
     {
         let currentSize = parseFloat(textContainer.style.fontSize) || 16; // Default font size if not set
-        if(currentSize > textContainer.scrollHeight)
+        if(currentSize < textContainer.scrollHeight)
         {
             while (textContainer.scrollHeight > textContainer.clientHeight && currentSize > 0) {
                 currentSize -= 1; // Decrease font size
