@@ -9,6 +9,14 @@
 </head>
 <body>
   <h1>FedEx</h1>
+  <div id="FedExDropdown">
+    <button type="button" onclick="SelectInformationType()">None Selected</button>
+    <ol id="FedExItemList">
+        <li value="0">Zip Code Data Information</li>
+        <li value="1">QA Code Information</li>
+        <li value="2">Driver Code Information</li>
+    </ol>
+  </div>
   <input type="text" placeholder="Enter Zip-Code">
   <button type="button" onclick="ValidateZipCode()">Search</button>
     <textarea id="FedExDeliveryRange">
@@ -18,6 +26,22 @@
 <script>
     let inputTextVar = document.querySelector('input[type="text"]');
     let textAreaVar = document.getElementById('FedExDeliveryRange');
+    let dropDownButton = document.querySelector('#FedExDropdown button');
+    let dropDownList = document.getElementById('FedExItemList');
+
+
+    function SelectInformationType(listElementID)
+    {
+        if(dropDownList.style.display === "none" || dropDownList.style.display === "")
+        {
+            dropDownList.style.display = "block";
+        }
+        else
+        {
+            dropDownList.style.display = "none";
+        }
+        
+    }
 
     function TextFitting(textContainer)
     {

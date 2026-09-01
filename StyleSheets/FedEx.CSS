@@ -16,3 +16,7 @@ textarea {
     -ms-user-select: none;
     pointer-events: none;
 }
+
+ol {
+    display: none;
+}
