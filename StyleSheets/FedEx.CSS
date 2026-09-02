@@ -22,9 +22,11 @@ textarea {
 ul {
     display: none;
     position: absolute;
+    
 }
 
 ul li {
     background-color: #e7e7e7;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
