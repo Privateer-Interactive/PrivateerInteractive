@@ -24,6 +24,13 @@ ol {
     position: absolute;
 }
 
+ol li {
+    background-color: #e7e7e7;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+
 #FedExDropdown {
     
 }
