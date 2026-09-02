@@ -11,11 +11,11 @@
   <h1>FedEx</h1>
   <div id="FedExDropdown">
     <button type="button" onclick="SelectInformationType()">None Selected</button>
-    <ol id="FedExItemList">
+    <ul id="FedExItemList">
         <li value="0">Zip Code Data Information</li>
         <li value="1">QA Code Information</li>
         <li value="2">Driver Code Information</li>
-    </ol>
+    </ul>
   </div>
   <input type="text" placeholder="Enter Zip-Code">
   <button type="button" onclick="ValidateZipCode()">Search</button>
@@ -41,6 +41,13 @@
             dropDownList.style.display = "none";
         }
         
+        let listItems = dropDownList.getElementsByTagName('li');
+        for (let i = 0; i < listItems.length; i++) {
+            listItems[i].addEventListener('click', function() {
+                dropDownButton.textContent = this.textContent;
+                dropDownList.style.display = "none";
+            });
+        }
     }
 
     function TextFitting(textContainer)
