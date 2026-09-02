@@ -46,6 +46,8 @@
             listItems[i].addEventListener('click', function() {
                 dropDownButton.textContent = this.textContent;
                 dropDownList.style.display = "none";
+                let placeholderTextArray = this.textContent.split(' ');
+                InputTextVar.value = "Enter " + placeholderTextArray[0] + " " + placeholderTextArray[1]; // Clear the input field when a new option is selected
             });
         }
     }
@@ -100,7 +102,7 @@
             fedExDeliveryRangeText = "Error fetching FedExDeliveryRange.txt";
         });    
         
-    window.onload = function() { console.log(fedExDeliveryRangeText.length) };
+    //window.onload = function() { console.log(fedExDeliveryRangeText.length) };
 
     function ValidateZipCode() {
         let zipCode = document.querySelector('input[type="text"]').value.trim();
