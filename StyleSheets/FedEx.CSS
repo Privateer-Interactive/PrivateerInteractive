@@ -19,12 +19,12 @@ textarea {
     pointer-events: none;
 }
 
-ol {
+ul {
     display: none;
     position: absolute;
 }
 
-ol li {
+ul li {
     background-color: #e7e7e7;
     cursor: pointer;
 }
