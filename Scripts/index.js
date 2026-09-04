@@ -55,7 +55,7 @@ function GetDOMElement(elementToCheck)
 console.log("***MY VERSION *** 0.0.2***");
 
 
-/* #region DOM_Management */
+
 
 /**
  * Creates and appends a new DOM element to a specified parent element.
@@ -86,4 +86,13 @@ function GenerateDOM(parentDOM, DOMtype = 'div', content = null, classType = nul
     return newDOMElement;
 }
 
-/* #endregion */
+function FetchData(filePath, callback)
+{
+    if(filePath === null || filePath === undefined || typeof filePath !== 'string') throw new Error('CUSTOM ERROR: filePath must be a valid string');
+    return fetch(filePath)
+        .then(response => response.text())
+        .then(data => {callback(data);})
+        .catch(error => {
+            console.error('CUSTOM ERROR: Error fetching ' + filePath, error);
+        });    
+}
