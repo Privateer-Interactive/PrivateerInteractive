@@ -108,9 +108,10 @@ function ParseStringData(dataStream, parseSplitArray)
     // turns certain syntax sensitive characters into a regex safe string to avoid errors when splitting the dataStream
     parseSplitArray = parseSplitArray.map(splitItem => splitItem.replace(/[\\^$.*+?()[\]{}|\-]/g, "\\$&"));
 
+    let regexPattern = new RegExp(`[${parseSplitArray.join("")}]`);
     for(let splitIndex = 0; splitIndex < dataStream.length; splitIndex++)
     {
-        console.log(dataStream[splitIndex].split(`[${parseSplitArray.join("")}]`));
+        console.log(dataStream[splitIndex].split(regexPattern));
         splitObjArray.push(dataStream[splitIndex].split(`[${parseSplitArray.join("")}]`));
     }
 
