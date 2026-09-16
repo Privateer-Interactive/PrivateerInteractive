@@ -112,6 +112,7 @@ function ParseStringData(dataStream, parseSplitArray)
     for(let splitIndex = 0; splitIndex < dataStream.length; splitIndex++)
     {
         let tempArray = dataStream[splitIndex].split(regexPattern);
+        console.log(Array.isArray(tempArray));
         console.log("tempArray: " + tempArray);
         splitObjArray.push(dataStream[splitIndex].split(regexPattern));
         //console.log(dataStream[splitIndex].split(regexPattern));
