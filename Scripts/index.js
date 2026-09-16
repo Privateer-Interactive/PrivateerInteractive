@@ -112,6 +112,8 @@ function ParseStringData(dataStream, parseSplitArray)
     for(let splitIndex = 0; splitIndex < dataStream.length; splitIndex++)
     {
         splitObjArray.push(dataStream[splitIndex].split(regexPattern));
+        console.log(dataStream[splitIndex].split(regexPattern));
+        console.log("\n\n" + splitObjArray[splitIndex]);
         //splitObjArray.push(dataStream[splitIndex].split(`[${parseSplitArray.join("")}]`));
     }
 
