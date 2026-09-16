@@ -81,6 +81,7 @@
     let fedExDeliveryLocations = [];
     let fedExDeliveryVanLines = [];
 
+    let fedExDeliveryInfo = [];
     //let rawData;
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
@@ -89,14 +90,28 @@
             //console.log(ParseStringData(data));
             //console.log(data);
             let parsedArray = ParseStringData(data, ['-']);
+
+
             for(let index = 0; index < parsedArray.length; index++) {
-                // fedExDeliveryRangeText.push(parsedArray[index]);
-                // fedExDeliveryZips.push(parsedArray[index][0]);
-                // fedExDeliveryDrivers.push(parsedArray[index][1]);
-                // // color code for contractor status identification
-                // fedExDeliveryLocations.push(parsedArray[index][3]);
-                // fedExDeliveryVanLines.push(parsedArray[index][4]);
-                console.log(parsedArray[index]);
+
+                
+                let dataObject = 
+                {
+                    zipCode: parsedArray[index][0],
+                    driver: parsedArray[index][1],
+                    region: parsedArray[index][2],
+                    vanLine: parsedArray[index][3]
+                }
+                
+                fedExDeliveryInfo.push(dataObject);
+
+
+                console.log(dataObject);
+                // fedExDeliveryRangeText.push(dataObject);
+                // fedExDeliveryZips.push(dataObject.zipCode);
+                // fedExDeliveryDrivers.push(dataObject.driver);
+                // fedExDeliveryLocations.push(dataObject.region);
+                // fedExDeliveryVanLines.push(dataObject.vanLine);
             }
 
             let localSplit = data.split('\n').map(range => range.trim());
