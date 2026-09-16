@@ -81,11 +81,13 @@
     let fedExDeliveryLocations = [];
     let fedExDeliveryVanLines = [];
 
+    let rawData;
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
         .then(data => {
 
-            console.log(ParseStringData(data));
+            //console.log(ParseStringData(data));
+            rawData = data;
 
             let localSplit = data.split('\n').map(range => range.trim());
             for(let i = 0; i < localSplit.length; i++) {
@@ -106,7 +108,7 @@
         });    
 
         console.log(checkFetch);
-        
+        console.log(ParseStringData(data));
     //window.onload = function() { console.log(fedExDeliveryRangeText.length) };
 
     function ValidateZipCode() {
