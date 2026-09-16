@@ -84,6 +84,9 @@
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
         .then(data => {
+
+            console.log(ParseStringData(data));
+
             let localSplit = data.split('\n').map(range => range.trim());
             for(let i = 0; i < localSplit.length; i++) {
                 let lineSplit = localSplit[i].split('-').map(range => range.trim());
