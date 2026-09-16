@@ -96,3 +96,22 @@ function FetchData(filePath, callback)
             console.error('CUSTOM ERROR: Error fetching ' + filePath, error);
         });    
 }
+
+function ParseStringData(dataStream, parseSplitArray)
+{
+    if(dataStream === null || dataStream === undefined || typeof dataStream !== 'string') throw new Error('CUSTOM ERROR: dataStream must be a valid string');
+    if(parseSplitArray === null || parseSplitArray === undefined || !Array.isArray(parseSplitArray)) throw new Error('CUSTOM ERROR: parseSplitArray must be a valid array');
+
+    let splitObjArray = [];
+    dataStream = dataStream.split('\n');
+
+    // turns certain syntax sensitive characters into a regex safe string to avoid errors when splitting the dataStream
+    parseSplitArray = parseSplitArray.map(splitItem => splitItem.replace(/[\\^$.*+?()[\]{}|\-]/g, "\\$&"));
+
+    for(let splitIndex = 0; splitIndex < dataStream.length; splitIndex++)
+    {
+        splitObjArray.push(dataStream[splitIndex].split(`[${parseSplitArray.join("")}]`));
+    }
+
+    return splitObjArray;
+}

@@ -1,0 +1,17 @@
+01-Customer_Security_Delay
+02-Incorrect_Recipient_Address
+03-Unable_To_Locate_Recipient_Address
+04-Non_Residential_Recipient_Not_In
+05-Counter_Delivery
+06-Package_Refused_By_Recipient
+07
+08
+09-Delivery_To_A_Business
+10-Inspect_Package
+12-Package_Sorted_To_Wrong_Route
+27-Driver_Didn't_Attempt
+34-Future_Delivery
+37-Building_Failure
+39-Damaged_Items
+40-Repack_(No_Damage)
+99-Disposed_of_Locally
