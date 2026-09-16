@@ -87,7 +87,7 @@
         .then(data => {
 
             //console.log(ParseStringData(data));
-            rawData = data;
+            rawData = response.Text();
 
             let localSplit = data.split('\n').map(range => range.trim());
             for(let i = 0; i < localSplit.length; i++) {
