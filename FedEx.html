@@ -81,13 +81,13 @@
     let fedExDeliveryLocations = [];
     let fedExDeliveryVanLines = [];
 
-    let rawData;
+    //let rawData;
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
         .then(data => {
 
             //console.log(ParseStringData(data));
-            rawData = data;
+            console.log(data);
 
             let localSplit = data.split('\n').map(range => range.trim());
             for(let i = 0; i < localSplit.length; i++) {
@@ -107,7 +107,7 @@
             fedExDeliveryRangeText = "Error fetching FedExDeliveryRange.txt";
         });    
 
-        console.log(rawData);
+        //console.log(rawData);
         console.log(ParseStringData(rawData, ['-']));
     //window.onload = function() { console.log(fedExDeliveryRangeText.length) };
 
