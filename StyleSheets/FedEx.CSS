@@ -19,6 +19,16 @@ textarea {
     pointer-events: none;
 }
 
+#FedExDeliveryRange {
+    font-size: 90cqw;
+    height: 50vh;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
 ul {
     display: none;
     position: absolute;
