@@ -99,10 +99,11 @@
                 {
                     zipCode: parsedArray[index][0],
                     driver: parsedArray[index][1],
-                    region: parsedArray[index][2],
-                    vanLine: parsedArray[index][3]
+                    colorCode: parsedArray[index][2],
+                    region: parsedArray[index][3],
+                    vanLine: parsedArray[index][4]
                 }
-                
+                fedExDeliveryZips.push(dataObject.zipCode);
                 fedExDeliveryInfo.push(dataObject);
 
 
@@ -114,18 +115,18 @@
                 // fedExDeliveryVanLines.push(dataObject.vanLine);
             }
 
-            let localSplit = data.split('\n').map(range => range.trim());
-            for(let i = 0; i < localSplit.length; i++) {
-                let lineSplit = localSplit[i].split('-').map(range => range.trim());
-                fedExDeliveryRangeText.push(lineSplit);
-                fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
-                fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1]);
-                // color code for contractor status identification
-                fedExDeliveryLocations.push(fedExDeliveryRangeText[i][3]);
-                fedExDeliveryVanLines.push(fedExDeliveryRangeText[i][4]);
-            }
+            // let localSplit = data.split('\n').map(range => range.trim());
+            // for(let i = 0; i < localSplit.length; i++) {
+            //     let lineSplit = localSplit[i].split('-').map(range => range.trim());
+            //     fedExDeliveryRangeText.push(lineSplit);
+            //     fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
+            //     fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1]);
+            //     // color code for contractor status identification
+            //     fedExDeliveryLocations.push(fedExDeliveryRangeText[i][3]);
+            //     fedExDeliveryVanLines.push(fedExDeliveryRangeText[i][4]);
+            // }
 
-            fedExDeliveryZips.pop();
+            // fedExDeliveryZips.pop();
         })
         .catch(error => {
             console.error('Error fetching FedExDeliveryRange.txt:', error);
@@ -138,6 +139,7 @@
     function ValidateZipCode() {
         let zipCode = document.querySelector('input[type="text"]').value.trim();
         zipCode = inputTextVar.value.trim();
+        
         if(fedExDeliveryZips.includes(zipCode)) {
             let indexValue = fedExDeliveryZips.indexOf(zipCode);
             document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[indexValue] + "\nArea: " + fedExDeliveryLocations[indexValue] + "\nVan Line: " + fedExDeliveryVanLines[indexValue];
