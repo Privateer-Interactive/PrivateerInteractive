@@ -29,11 +29,7 @@ textarea {
     pointer-events: none;
 
     background-color: white;
-    margin: 0em 0em 0em 0em;
-    padding: 1px 0px;
-    border-width: 2px;
-    border-style: inset;
-    border-color: rgb(118,118,118);
+    border: 1px solid #ccc;
 }
 
 ul {

@@ -19,7 +19,10 @@
   <input type="text" placeholder="Enter Zip-Code">
   <button type="button" onclick="ValidateZipCode()">Search</button>
     <div id="FedExDeliveryRange">
-    
+        <span id="FX_ZipCode">No Data</span>
+        <span id="FX_Driver">No Data</span>
+        <span id="FX_Region">No Data</span>
+        <span id="FX_VanLine">No Data</span>
     </div>
 </body>
 <script src="Scripts/index.js"></script>
@@ -81,7 +84,7 @@
     let fedExDeliveryLocations = [];
     let fedExDeliveryVanLines = [];
 
-    let fedExDeliveryInfo = [];
+    let fedExDeliveryInfo = new Map();
     //let rawData;
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
@@ -97,17 +100,17 @@
                 
                 let dataObject = 
                 {
-                    zipCode: parsedArray[index][0],
                     driver: parsedArray[index][1],
                     colorCode: parsedArray[index][2],
                     region: parsedArray[index][3],
                     vanLine: parsedArray[index][4]
                 }
                 fedExDeliveryZips.push(dataObject.zipCode);
-                fedExDeliveryInfo.push(dataObject);
+                //fedExDeliveryInfo.push(dataObject);
+                fedExDeliveryInfo.set(parsedArray[index][0], dataObject);
 
 
-                console.log(dataObject);
+                console.log(fedExDeliveryInfo[parsedArray[index][0]]);
                 // fedExDeliveryRangeText.push(dataObject);
                 // fedExDeliveryZips.push(dataObject.zipCode);
                 // fedExDeliveryDrivers.push(dataObject.driver);
