@@ -110,7 +110,7 @@
                 fedExDeliveryInfo.set(parsedArray[index][0], dataObject);
 
 
-                console.log(fedExDeliveryInfo.get(parsedArray[index][0]));
+                //console.log(fedExDeliveryInfo.get(parsedArray[index][0]));
                 // fedExDeliveryRangeText.push(dataObject);
                 // fedExDeliveryZips.push(dataObject.zipCode);
                 // fedExDeliveryDrivers.push(dataObject.driver);
@@ -142,7 +142,7 @@
     function ValidateZipCode() {
         let zipCode = document.querySelector('input[type="text"]').value.trim();
         zipCode = inputTextVar.value.trim();
-        
+        if(fedExDeliveryInfo.has(zipCode))console.log(fedExDeliveryInfo.get(zipCode));
         if(fedExDeliveryZips.includes(zipCode)) {
             let indexValue = fedExDeliveryZips.indexOf(zipCode);
             document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[indexValue] + "\nArea: " + fedExDeliveryLocations[indexValue] + "\nVan Line: " + fedExDeliveryVanLines[indexValue];
