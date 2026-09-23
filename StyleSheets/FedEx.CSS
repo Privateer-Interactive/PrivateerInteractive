@@ -32,6 +32,11 @@ textarea {
     border: 1px solid #ccc;
 }
 
+span {
+    width: 100%;
+    height: 25%;
+}
+
 ul {
     display: none;
     position: absolute;
