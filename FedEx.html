@@ -147,13 +147,13 @@
             // document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[indexValue] + "\nArea: " + fedExDeliveryLocations[indexValue] + "\nVan Line: " + fedExDeliveryVanLines[indexValue];
             // document.getElementById('FedExDeliveryRange').style.color = "green";
             document.getElementById('FX_ZipCode').textContent = zipCode;
-            document.getElementById('FX_ZipCode').textContent.style.color = "green";
+            document.getElementById('FX_ZipCode').style.color = "green";
             document.getElementById('FX_Driver').textContent = "Contractor: " + fedExDeliveryInfo.get(zipCode).driver;
-            document.getElementById('FX_Driver').textContent.style.color = fedeExDeliveryInfo.get(zipCode).colorCode;
+            document.getElementById('FX_Driver').style.color = fedeExDeliveryInfo.get(zipCode).colorCode;
             document.getElementById('FX_Region').textContent = "Area: " + fedExDeliveryInfo.get(zipCode).region;
-            document.getElementById('FX_Region').textContent.style.color = "green";
+            document.getElementById('FX_Region').style.color = "green";
             document.getElementById('FX_VanLine').textContent = "Van Line: " + fedExDeliveryInfo.get(zipCode).vanLine;
-            document.getElementById('FX_VanLine').textContent.style.color = "green";
+            document.getElementById('FX_VanLine').style.color = "green";
         } else {
             document.getElementById('FedExDeliveryRange').value = zipCode + " - Invalid zip code. Delivery is not available.";
             document.getElementById('FedExDeliveryRange').style.color = "red";
