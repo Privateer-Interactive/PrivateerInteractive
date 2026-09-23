@@ -152,11 +152,17 @@
             document.getElementById('FX_Driver').style.color = fedExDeliveryInfo.get(zipCode).colorCode;
             document.getElementById('FX_Region').textContent = "Area: " + fedExDeliveryInfo.get(zipCode).region;
             document.getElementById('FX_Region').style.color = "green";
-            document.getElementById('FX_VanLine').textContent = "Van Line: " + fedExDeliveryInfo.get(zipCode).vanLine;
+            document.getElementById('FX_VanLine').textContent = fedExDeliveryInfo.get(zipCode).vanLine;
             document.getElementById('FX_VanLine').style.color = "green";
         } else {
-            document.getElementById('FedExDeliveryRange').value = zipCode + " - Invalid zip code. Delivery is not available.";
-            document.getElementById('FedExDeliveryRange').style.color = "red";
+            document.getElementById('FX_ZipCode').textContent = "NO DATA";
+            document.getElementById('FX_ZipCode').style.color = "red";
+            document.getElementById('FX_Driver').textContent = "NO DATA";
+            document.getElementById('FX_Driver').style.color = "red";
+            document.getElementById('FX_Region').textContent = "NO DATA";
+            document.getElementById('FX_Region').style.color = "red";
+            document.getElementById('FX_VanLine').textContent = "NO DATA";
+            document.getElementById('FX_VanLine').style.color = "red";
         }
 
         //TextFitting(textAreaVar);
