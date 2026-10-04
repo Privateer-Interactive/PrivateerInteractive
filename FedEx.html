@@ -79,12 +79,12 @@
 
 
     let fedExDeliveryRangeText = []; 
+    let fedExDriverColor = [];
     let fedExDeliveryZips = [];
     let fedExDeliveryDrivers = [];
     let fedExDeliveryLocations = [];
     let fedExDeliveryVanLines = [];
 
-    let fedExDeliveryInfo = new Map();
     //let rawData;
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
@@ -97,26 +97,19 @@
 
             for(let index = 0; index < parsedArray.length; index++) {
 
-                
-                let dataObject = 
-                {
-                    driver: parsedArray[index][1],
-                    colorCode: parsedArray[index][2],
-                    region: parsedArray[index][3],
-                    vanLine: parsedArray[index][4]
-                }
-                fedExDeliveryZips.push(dataObject.zipCode);
-                //fedExDeliveryInfo.push(dataObject);
-                fedExDeliveryInfo.set(parsedArray[index][0], dataObject);
-
-
                 //console.log(fedExDeliveryInfo.get(parsedArray[index][0]));
-                // fedExDeliveryRangeText.push(dataObject);
-                // fedExDeliveryZips.push(dataObject.zipCode);
-                // fedExDeliveryDrivers.push(dataObject.driver);
-                // fedExDeliveryLocations.push(dataObject.region);
-                // fedExDeliveryVanLines.push(dataObject.vanLine);
+                fedExDeliveryZips.push(parsedArray[index][0]);
+                fedExDeliveryDrivers.push(parsedArray[index][1]);
+                fedExDriverColor.push(parsedArray[index][2])
+                fedExDeliveryLocations.push(parsedArray[index][3]);
+                fedExDeliveryVanLines.push(parsedArray[index][4]);
             }
+
+            fedExDeliveryZips.pop();
+            fedExDeliveryDrivers.pop();
+            fedExDriverColor.pop();
+            fedExDeliveryLocations.pop();
+            fedExDeliveryVanLines.pop();
 
             // let localSplit = data.split('\n').map(range => range.trim());
             // for(let i = 0; i < localSplit.length; i++) {
@@ -140,19 +133,23 @@
     //window.onload = function() { console.log(fedExDeliveryRangeText.length) };
 
     function ValidateZipCode() {
-        let zipCode = document.querySelector('input[type="text"]').value.trim();
-        zipCode = inputTextVar.value.trim();
-        if(fedExDeliveryInfo.has(zipCode)) {
-            let indexValue = fedExDeliveryZips.indexOf(zipCode);
+        //let zipCode = document.querySelector('input[type="text"]').value.trim();
+        let enteredText = inputTextVar.value.trim();
+        let validZip = fedExDeliveryZips.indexOf(enteredText);
+        let validLocation = fedExDeliveryLocations.indexOf(enteredText);
+        let validSearch = validZip > validLocation ? validZip : validLocation;
+
+        if(validSearch != -1) {
+            //let indexValue = fedExDeliveryZips.indexOf(zipCode);
             // document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[indexValue] + "\nArea: " + fedExDeliveryLocations[indexValue] + "\nVan Line: " + fedExDeliveryVanLines[indexValue];
             // document.getElementById('FedExDeliveryRange').style.color = "green";
-            document.getElementById('FX_ZipCode').textContent = zipCode;
+            document.getElementById('FX_ZipCode').textContent = fedExDeliveryZips[validSearch];
             document.getElementById('FX_ZipCode').style.color = "green";
-            document.getElementById('FX_Driver').textContent = "Contractor: " + fedExDeliveryInfo.get(zipCode).driver;
-            document.getElementById('FX_Driver').style.color = fedExDeliveryInfo.get(zipCode).colorCode;
-            document.getElementById('FX_Region').textContent = "Area: " + fedExDeliveryInfo.get(zipCode).region;
+            document.getElementById('FX_Driver').textContent = "Contractor: " + fedExDeliveryDrivers[validSearch];
+            document.getElementById('FX_Driver').style.color = fedExDriverColor[validSearch];
+            document.getElementById('FX_Region').textContent = "Area: " + fedExDeliveryLocations[validSearch];
             document.getElementById('FX_Region').style.color = "green";
-            document.getElementById('FX_VanLine').textContent = fedExDeliveryInfo.get(zipCode).vanLine;
+            document.getElementById('FX_VanLine').textContent =fedExDeliveryVanLines[validSearch];
             document.getElementById('FX_VanLine').style.color = "green";
         } else {
             document.getElementById('FX_ZipCode').textContent = "NO DATA";
