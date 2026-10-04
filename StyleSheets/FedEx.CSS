@@ -19,6 +19,15 @@ textarea {
     pointer-events: none;
 }
 
+#MultiDataList ul {
+    display: none;
+}
+
+#FedExDeliveryRange div {
+    width: 100%;
+    height: 100%;
+}
+
 #FedExDeliveryRange {
     font-size: 90cqw;
     height: 50vh;

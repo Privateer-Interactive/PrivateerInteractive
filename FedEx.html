@@ -19,10 +19,17 @@
   <input type="text" placeholder="Enter Zip-Code">
   <button type="button" onclick="ValidateZipCode()">Search</button>
     <div id="FedExDeliveryRange">
-        <span id="FX_ZipCode">No Data</span>
-        <span id="FX_Driver">No Data</span>
-        <span id="FX_Region">No Data</span>
-        <span id="FX_VanLine">No Data</span>
+        <div id="SingleDataList">
+            <span id="FX_ZipCode">No Data</span>
+            <span id="FX_Driver">No Data</span>
+            <span id="FX_Region">No Data</span>
+            <span id="FX_VanLine">No Data</span>
+        </div>
+        <div id="MultiDataList">
+            <ul style="list-style: none;">
+                
+            </ul>
+        </div>
     </div>
 </body>
 <script src="Scripts/index.js"></script>
