@@ -127,7 +127,7 @@
 14221-CHEK-Yellow-Williamsville/Amherst/Buffalo-OUTBOUND
 14222-DSS-Gray-Buffalo-VL#
 14223-FAMILY_FIRST-White-Tonawanda/Kenmore/Buffalo-VL#
-14224-ACE2-Gray-West_Seneca/Buffalo-VL#
+14224-ACE2-Gray-West_Seneca-VL#
 14225-CHEK-Yellow-Cheektowaga/Buffalo-OUTBOUND
 14226-CHEK-Yellow-Amherst/Buffalo-OUTBOUND
 14227-ACE2-Gray-Buffalo/Cheektowaga-VL#

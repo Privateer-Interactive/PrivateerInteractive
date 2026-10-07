@@ -62,29 +62,6 @@
         }
     }
 
-    function TextFitting(textContainer)
-    {
-        let currentSize = parseFloat(textContainer.style.fontSize) || 16; // Default font size if not set
-        if(currentSize < textContainer.scrollHeight)
-        {
-            while (textContainer.scrollHeight > textContainer.clientHeight && currentSize > 0) {
-                currentSize -= 1; // Decrease font size
-                textContainer.style.fontSize = currentSize + 'px';
-            }
-        }
-        else
-        {
-            while (textContainer.scrollHeight <= textContainer.clientHeight && currentSize < 1000) {
-                currentSize += 1; // Increase font size
-                textContainer.style.fontSize = currentSize + 'px';
-            }
-            // Decrease by one to ensure it fits
-            currentSize -= 1;
-            textContainer.style.fontSize = currentSize + 'px';
-        }
-    }
-
-
     let fedExDeliveryRangeText = []; 
     let fedExDriverColor = [];
     let fedExDeliveryZips = [];
@@ -96,15 +73,10 @@
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
         .then(data => {
-
-            //console.log(ParseStringData(data));
-            //console.log(data);
             let parsedArray = ParseStringData(data, ['-']);
 
 
             for(let index = 0; index < parsedArray.length; index++) {
-
-                //console.log(fedExDeliveryInfo.get(parsedArray[index][0]));
                 fedExDeliveryZips.push(parsedArray[index][0]);
                 fedExDeliveryDrivers.push(parsedArray[index][1]);
                 fedExDriverColor.push(parsedArray[index][2])
@@ -117,39 +89,68 @@
             fedExDriverColor.pop();
             fedExDeliveryLocations.pop();
             fedExDeliveryVanLines.pop();
-
-            // let localSplit = data.split('\n').map(range => range.trim());
-            // for(let i = 0; i < localSplit.length; i++) {
-            //     let lineSplit = localSplit[i].split('-').map(range => range.trim());
-            //     fedExDeliveryRangeText.push(lineSplit);
-            //     fedExDeliveryZips.push(fedExDeliveryRangeText[i][0]);
-            //     fedExDeliveryDrivers.push(fedExDeliveryRangeText[i][1]);
-            //     // color code for contractor status identification
-            //     fedExDeliveryLocations.push(fedExDeliveryRangeText[i][3]);
-            //     fedExDeliveryVanLines.push(fedExDeliveryRangeText[i][4]);
-            // }
-
-            // fedExDeliveryZips.pop();
         })
         .catch(error => {
             console.error('Error fetching FedExDeliveryRange.txt:', error);
             fedExDeliveryRangeText = "Error fetching FedExDeliveryRange.txt";
         });    
 
-        //console.log(rawData);
-    //window.onload = function() { console.log(fedExDeliveryRangeText.length) };
-
     function ValidateZipCode() {
-        //let zipCode = document.querySelector('input[type="text"]').value.trim();
         let enteredText = inputTextVar.value.trim();
         let validZip = fedExDeliveryZips.indexOf(enteredText);
         let validLocation = fedExDeliveryLocations.indexOf(enteredText);
-        let validSearch = validZip > validLocation ? validZip : validLocation;
+        let validContractor = fedExDeliveryDrivers.indexOf(enteredText);
+        let validVanLine = fedExDeliveryVanLines.indexOf(enteredText);
+
+        let validSearch = validZip > validLocation ? validZip : validLocation > validContractor ? validLocation : validContractor > validVanLine ? validContractor : validVanLine;
+
+        let fedexListLength = fedExDeliveryZips.length;
+
+        if(validSearch != -1)
+        {
+            let textContent = "";
+            
+            if(validZip != -1)
+            {
+                
+            }
+            else
+            {
+                let localDataArray = [];
+
+                if(validLocation != -1)
+                {
+                    
+                    for(let index = 0; index < fedexListLength; index++)
+                    {
+                        if(fedExDeliveryLocations[index] == enteredText)
+                        {
+                            textContent += fedExDeliveryZips[index] + " / " + fedExDeliveryDrivers[index] + " / " + fedExDeliveryVanLines[index]; + "\n";
+                        }
+                    }
+                    console.log(textContent);
+                }
+                else if(validContractor != -1)
+                {
+                    for(let index = 0; index < localDataArray.length; index++)
+                    {
+                        
+                    }
+                }
+                else if(validVanLine != -1)
+                {
+                    for(let index = 0; index < localDataArray.length; index++)
+                    {
+                        
+                    }
+                }
+                
+
+            }
+
+        }
 
         if(validSearch != -1) {
-            //let indexValue = fedExDeliveryZips.indexOf(zipCode);
-            // document.getElementById('FedExDeliveryRange').value = zipCode + " - Valid zip code.\n" + "Contractor: " + fedExDeliveryDrivers[indexValue] + "\nArea: " + fedExDeliveryLocations[indexValue] + "\nVan Line: " + fedExDeliveryVanLines[indexValue];
-            // document.getElementById('FedExDeliveryRange').style.color = "green";
             document.getElementById('FX_ZipCode').textContent = fedExDeliveryZips[validSearch];
             document.getElementById('FX_ZipCode').style.color = "green";
             document.getElementById('FX_Driver').textContent = "Contractor: " + fedExDeliveryDrivers[validSearch];
@@ -168,10 +169,6 @@
             document.getElementById('FX_VanLine').textContent = "NO DATA";
             document.getElementById('FX_VanLine').style.color = "red";
         }
-
-        //TextFitting(textAreaVar);
-
-
     }
 </script>
 </html>
