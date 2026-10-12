@@ -62,13 +62,19 @@
         }
     }
 
-    let fedExDeliveryRangeText = []; 
+    let fedExDeliveryRangeText = "";
     let fedExDriverColor = [];
     let fedExDeliveryZips = [];
     let fedExDeliveryDrivers = [];
     let fedExDeliveryLocations = [];
     let fedExDeliveryVanLines = [];
 
+    
+    let FXDriverColor = [];
+    let FXZips = [];
+    let FXDrivers = [];
+    let FXLocations = [];
+    let FXVanLines = [];
     //let rawData;
     let checkFetch = fetch('TextData/FedExDeliveryRange.txt')
         .then(response => response.text())
@@ -78,6 +84,12 @@
 
             for(let index = 0; index < parsedArray.length; index++) {
                 fedExDeliveryZips.push(parsedArray[index][0]);
+                
+                FXZips.push([...parsedArray[index][0]]);
+                FXZips[index].forEach(element => {
+                    element = element.charCodeAt(0);
+                });
+                console.log(FXZips[index]);
                 fedExDeliveryDrivers.push(parsedArray[index][1]);
                 fedExDriverColor.push(parsedArray[index][2])
                 fedExDeliveryLocations.push(parsedArray[index][3]);
@@ -95,6 +107,7 @@
             fedExDeliveryRangeText = "Error fetching FedExDeliveryRange.txt";
         });    
 
+
     function ValidateZipCode() {
         let enteredText = inputTextVar.value.trim();
         let validZip = fedExDeliveryZips.indexOf(enteredText);
@@ -107,10 +120,13 @@
         let fedexListLength = fedExDeliveryZips.length;
 
         let totalUnicodeNums = "";
+        let enteredTextUnicodes = [];
         for(let index = 0; index < enteredText.length; index++)
         {
+            enteredTextUnicodes.push(enteredText.charCodeAt(indedx));
             totalUnicodeNums += enteredText.charCodeAt(index) + " ";
         }
+
 
         console.log(totalUnicodeNums);
 
