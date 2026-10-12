@@ -141,7 +141,7 @@
 14303-ELITE-Gray-Niagra_Falls-VL#
 14304-ELITE-White-Niagra_Falls-VL#
 14305-ELITE-Gray-Niagra_Falls-VL#
-14706-GENESIS/Keysor-Red-TOWN_NAME-VL#
+14706-GENESIS/Keysor-Red-Allegany-VL#
 14708-BURNETT-Gray-Alma-VL#
 14709-BURNETT-White-Angelica-VL#
 14711-BURNETT-Gray-Belfast-VL#
