@@ -106,6 +106,14 @@
 
         let fedexListLength = fedExDeliveryZips.length;
 
+        let totalUnicodeNums = "";
+        for(let index = 0; index < enteredText.length; index++)
+        {
+            totalUnicodeNums += enteredText.charCodeAt(index) + " ";
+        }
+
+        console.log(totalUnicodeNums);
+
         if(validSearch != -1)
         {
             let textContent = "";
@@ -128,7 +136,7 @@
                             textContent += fedExDeliveryZips[index] + " / " + fedExDeliveryDrivers[index] + " / " + fedExDeliveryVanLines[index]; + "\n";
                         }
                     }
-                    console.log(textContent);
+                    
                 }
                 else if(validContractor != -1)
                 {
