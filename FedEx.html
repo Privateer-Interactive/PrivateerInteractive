@@ -86,10 +86,14 @@
                 fedExDeliveryZips.push(parsedArray[index][0]);
                 
                 FXZips.push([...parsedArray[index][0]]);
-                FXZips[index].forEach(element => {
-                    element = element.charCodeAt(0);
-                    console.log(element);
-                });
+                // FXZips[index].forEach(element => {
+                //     element = element.charCodeAt(0);
+                //     console.log(element);
+                // });
+                for(let index2 = 0; index2 < FXZipsp[index].length; index2++)
+                {
+                    FXZips[index][index2] = FXZips[index][index2].charCodeAt(0);
+                }
                 console.log(FXZips[index]);
                 fedExDeliveryDrivers.push(parsedArray[index][1]);
                 fedExDriverColor.push(parsedArray[index][2])
